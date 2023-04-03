@@ -1,0 +1,42 @@
+<!--
+ - Created by Artsiom.Klimanski on 12/13/2019.
+ -->
+
+<!-- Questions -->
+<template>
+    <div class='cover'>
+
+        <template for:each={types} for:item='typeItem'>
+            <div key={typeItem.typeId}>
+
+                <article class="slds-card cardType">
+                    <div class="slds-card__header slds-grid">
+                        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                            <div class="slds-media__figure">
+                            </div>
+                            <div class="slds-media__body">
+                                <h2 class="slds-card__header-title">
+                                    {typeItem.typeName}
+                                </h2>
+                            </div>
+                        </header>
+                    </div>
+                    <div class="slds-card__body">
+                        <lightning-accordion allow-multiple-sections-open>
+
+                            <template for:each={typeItem.items} for:item='item'>
+                                <div key={item.itemId}>
+                                    <lightning-accordion-section name={item.itemId} label={item.question}>
+                                        <lightning-formatted-rich-text value={item.answer}></lightning-formatted-rich-text>
+                                    </lightning-accordion-section>
+                                </div>
+                            </template>
+                        </lightning-accordion>
+                    </div>
+                </article>
+
+            </div>
+        </template>
+
+    </div>
+</template>

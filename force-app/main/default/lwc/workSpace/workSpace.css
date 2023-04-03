@@ -1,0 +1,135 @@
+/**
+ * Created by Artsiom.Klimanski on 12/13/2019.
+ */
+.cover {
+    position:fixed;
+    padding:0;
+    margin:0;
+
+    top:0;
+    left:0;
+
+    width: 100%;
+    height: 83%;
+    background: burlywood;
+}
+
+.navBar {
+    height: 100%;
+    background-color: #3B759A !important;
+}
+
+.navHeader {
+    height: 110px !important;
+    background-color: #F79621;
+}
+
+.rightHeader {
+    height: 110px!important;
+    width: 100%;
+    position: relative;
+}
+
+.subHeader {
+    height: 110px!important;
+    width: 100%;
+    border-top: 1px solid darkgrey;
+    position: relative;
+    display: flex;
+}
+
+.companyName {
+    margin-top: 20%;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.container {
+    margin-left: 35%;
+    top: 35%;
+    position: absolute;
+}
+
+.customAvatar {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-top: 5%;
+}
+
+.subHeaderItem {
+    margin-left: 15px;
+}
+
+.customAvatarSub {
+    width: 5rem;
+    height: 5rem;
+    margin-top: 16%;
+}
+
+.headerItem {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.headerItem:hover {
+    background-color: lightseagreen;
+}
+
+.itemText {
+    margin-left: 25px;
+}
+
+.searchInput {
+    float: right;
+    width: 50%;
+}
+
+.input {
+    border-radius: 9999em;
+}
+
+.leftList {
+    height: 150vh;
+}
+
+.buttonGroup {
+    display: flex;
+    margin-left: auto;
+}
+
+.circleButton {
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    margin-top: 5px;
+    margin-right: 5px;
+    background-color: white;
+    border: grey 2px solid;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.itemIcon {
+    background-color: transparent !important;
+}
+
+.circleButton:hover {
+    background-color: darkorange;
+}
+
+.slds-tabs_default__link {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.logo {
+    width: 50%;
+}
+
+.tabItem:hover
+{
+    cursor: pointer;
+    background-color: lightgreen;
+}

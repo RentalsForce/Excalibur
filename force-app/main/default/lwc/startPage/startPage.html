@@ -1,0 +1,149 @@
+<!--
+ - Created by Artsiom.Klimanski on 12/12/2019.
+ -->
+
+<!-- Start Page -->
+<template>
+    <template if:false={loginModal}>
+        <div class='cover' style={backgroundStyle}>
+            <div class='header'>
+                <div class='headerBlock'>
+                    <div class='linksBlock'>
+                        <div class='link'><a href='#'>HOME</a></div>
+                        <div class='link'><a href='#'>FROM</a></div>
+                        <div class='link'><a href='#'>SERVICES</a></div>
+                        <div class='link'><a href='#'>PRICING PAGE</a></div>
+                        <div class='link'><a href='#'>ABOUT US</a></div>
+                    </div>
+                    <div class='login'>
+                        <div>
+                            <lightning-icon icon-name='utility:search' size='small'></lightning-icon>
+                        </div>
+                        <div class='loginButton'>
+                            <button class="slds-button slds-button_brand" onclick={loginModalVisibility}>Login</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='body'>
+
+            </div>
+            <div class='footer'>
+
+            </div>
+        </div>
+    </template>
+
+    <template if:true={loginModal}>
+        <div class='loginModal'>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <article class="slds-card loginCard">
+                        <div class="slds-no-flex close">
+                            <button class="slds-button slds-button_icon" title="Close" onclick={loginModalVisibility}>
+                                <lightning-icon icon-name='utility:close' size='small'></lightning-icon>
+                                <span class="slds-assistive-text">Settings</span>
+                            </button>
+                        </div>
+                        <div class='login_inside'>
+                            <div class='login_content'>
+                                <template if:false={forgot}>
+                                    <h3 class="title title__line-center">login</h3>
+                                    <p class="subtiltle">Login to our site</p>
+                                    <div class="slds-card__header slds-grid">
+                                        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                            <div class="slds-media__body">
+                                            </div>
+                                        </header>
+                                    </div>
+                                    <div class="slds-card__body slds-card__body_inner">
+                                        <div class="slds-form-element loginInput formInput">
+                                            <div class="slds-form-element__control">
+                                                <input type="text" id="text-input-id-1"
+                                                       class='form_input'
+                                                       placeholder="Login"
+                                                       name='login'
+                                                       onkeyup={inputChange}
+                                                       required=""
+                                                       data-type="login" />
+                                            </div>
+                                        </div>
+                                        <div class="slds-form-element passwordInput formInput">
+                                            <div class="slds-form-element__control">
+                                                <input type="password"
+                                                       name="password"
+                                                       id="text-input-id-2"
+                                                       onkeyup={inputChange}
+                                                       data-type="password"
+                                                       placeholder="Password"
+                                                       required=""
+                                                       class='form_input'/>
+                                            </div>
+                                        </div>
+                                        <div class="login-modal__form-checkbox">
+                                            <input id="remember" name="remember" type="checkbox" class='checkbox' data-type="remember" onchange={inputChange}>
+                                            <label for="remember">Remember me</label>
+                                        </div>
+                                        <template if:true={failedCredentials}>
+                                            <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert">
+                                                <h2>{failMessage}</h2>
+                                            </div>
+                                        </template>
+                                    </div>
+                                    <footer class="slds-card__footer loginFooter">
+                                        <div class='button_container'>
+                                            <button class="button" type='submit' onclick={login}>Login</button>
+                                        </div>
+                                        <div class="login-modal__form-recovery">
+                                            <a href="#" onclick={forgotPassword}>Forgot your password</a>
+                                        </div>
+                                    </footer>
+                                </template>
+                                <template if:true={forgot}>
+                                    <template if:true={forgotSuccess}>
+                                        <h3 class="title title__line-center">Check your email for getting new password</h3>
+                                    </template>
+                                    <template if:true={afterForgot}>
+                                        <h3 class="title title__line-center">Enter Your email for change password</h3>
+                                    </template>
+                                    <div class="slds-form-element passwordInput formInput">
+                                        <template if:true={afterForgot}>
+                                            <div class="slds-form-element__control">
+                                                <input type="text"
+                                                       name="email"
+                                                       id="email"
+                                                       onkeyup={inputChange}
+                                                       data-type="email"
+                                                       placeholder="Email"
+                                                       required=""
+                                                       class='form_input'/>
+                                            </div>
+                                        </template>
+                                        <template if:true={forgotFail}>
+                                            <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert">
+                                                <h2>Check Email and try again</h2>
+                                            </div>
+                                        </template>
+                                        <footer class="slds-card__footer loginFooter">
+                                            <template if:true={afterForgot}>
+                                                <div class='button_container'>
+                                                    <button class="button" type='submit' onclick={checkEmailLogin}>Reevaluate Password</button>
+                                                </div>
+                                            </template>
+                                            <template if:true={forgotSuccess}>
+                                                <div class='button_container'>
+                                                    <button class="button" type='submit' onclick={backToLogin}>Back to Login</button>
+                                                </div>
+                                            </template>
+                                        </footer>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+    </template>
+</template>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Make_a_Charge</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Make a Charge</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>//Get SFID from URL 
+var sfid = location.href.replace(/^.*salesforce\.com\/([^\/]+).*$/, &apos;$1&apos;); 
+window.childWin = window.open(&apos;/apex/StripeManualCharge?id=&apos; + sfid, &apos;Stripe Manual Charge&apos;, &apos;height=250,width=700,location=yes,menubar=no,status=no,toolbar=no&apos;); 
+window.intervalId = window.setInterval(&apos;window.checkIfChildWindowIsClosed()&apos;, 2*1000); 
+
+//add check function to window 
+window.checkIfChildWindowIsClosed = function() 
+{ 
+if(window.childWin.closed) 
+{ 
+window.clearInterval(window.intervalId); 
+window.parent.location.href = window.parent.location.href; 
+} 
+}</url>
+</WebLink>

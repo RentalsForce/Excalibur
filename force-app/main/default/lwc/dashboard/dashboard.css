@@ -1,0 +1,120 @@
+/**
+ * Created by Artsiom.Klimanski on 12/13/2019.
+ */
+.cover {
+    width: 100%;
+    height: 83%;
+    background: #EFF2F7;
+    overflow: hidden;
+}
+
+.issue {
+    display: flex;
+    width: 100%;
+}
+
+.dashboard {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.priority_cell
+{
+    height: 100%;
+    text-align: center;
+    font-size: -webkit-xxx-large;
+}
+
+.priority_column
+{
+    width: 10%;
+    padding: 5px;
+    border-right: 1px solid darkgrey;
+    border-bottom: 1px solid darkgrey;
+}
+
+.issue_column
+{
+    width: 30%;
+    padding: 5px;
+    border-bottom: 1px solid darkgrey;
+}
+
+.inspector_note_column
+{
+    width: 20%;
+    border-left: 1px solid darkgrey;
+    border-right: 1px solid darkgrey;
+    text-align: center;
+    padding: 5px;
+    border-bottom: 1px solid darkgrey;
+}
+
+.recommendation_column
+{
+    width: 30%;
+    border-right: 1px solid darkgrey;
+    padding: 5px;
+    border-bottom: 1px solid darkgrey;
+}
+
+.cost_column
+{
+    width: 10%;
+    padding: 5px;
+    border-bottom: 1px solid darkgrey;
+}
+
+.slds-tabs_default {
+    /*padding: 10px;*/
+}
+
+.issuesContainer>div.issue {
+    border: 1px solid darkgrey;
+}
+
+.cell {
+    padding: 5px;
+    width: 100%;
+}
+
+.slds-tabs_default {
+    height: 100%;
+}
+
+.emptyText {
+    height: auto;
+    text-align: center;
+    font-size: x-large;
+    margin-top: 50px;
+}
+
+.issue_header
+{
+    background-color: aliceblue;
+    font-size: 18px;
+    text-align: center
+}
+
+.issue_table {
+    max-height: 90vh;
+    overflow-y: auto;
+    width: 100%;
+    text-align: left;
+    scrollbar-width: 0px;
+}
+
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+.inspector_note {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.issue_photo {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

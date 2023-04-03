@@ -1,0 +1,162 @@
+<!--
+ - Created by Artsiom.Klimanski on 12/13/2019.
+ -->
+
+<!-- Dashboard -->
+<template>
+    <div class='cover'>
+        <template if:true={currentTarget}>
+            <div class="slds-tabs_default">
+                <ul class="slds-tabs_default__nav" role="tablist" style='font-size: x-large'>
+                    <template for:each={currentTarget.targetResults} for:item='result'>
+                        <li key={result.libName} class="slds-tabs_default__item tab" title={result.libName} role="presentation">
+                            <a class="slds-tabs_default__link"
+                               href="#"
+                               role="tab"
+                               tabindex="0"
+                               aria-selected="false"
+                               aria-controls={result.libName}
+                               id={result.resultId}
+                               data-tab={result.resultId}
+                               onclick={tabClick}>
+                                {result.libName}
+                            </a>
+                        </li>
+                    </template>
+                </ul>
+                <template if:true={currentResult.haveResults}>
+                    <div key={currentResult.resultId} id={currentResult.libName}
+                         class="slds-tabs_default__content tabContent slds-show"
+                         data-tab={currentResult.resultId}
+                         role="tabpanel"
+                         aria-labelledby={currentResult.resultId}>
+                        <template if:true={currentResult.issues}>
+                            <div class='issuesContainer'>
+                                <div class='slds-grid dashboard'>
+                                    <div style='width: 50%; padding-left: 40px'>
+                                        <div>
+                                            <p style='font-size: large'>Assessment Points: {currentResult.averagePoints}/{currentResult.maxPoints}</p>
+                                        </div>
+                                        <img src={currentResult.imageUrl}/>
+                                    </div>
+
+                                    <div style='width: 50%; color: #093A3F; font-size: large'>
+                                        <p><b>Critical Priority (Red)</b> - Litigation or government penalty is imminent</p>
+                                        <p><b>High Priority (Orange)</b> - Litigation or government penalty is highly likely</p>
+                                        <p><b>Substantial Priority (Yellow)</b> - Moderate possibility of litigation or government </p>
+                                        <p><b>Moderate Priority (Blue)</b> - Low possibility of litigation or government penalty</p>
+                                        <p><b>Low Priority (Green)</b> - Resolution is recommended but not legally required</p>
+                                        <p></p>
+                                        <div class='slds-grid'>
+                                            <div class='slds-col'>
+                                                <button class='slds-button slds-button_brand'
+                                                        style='margin-top: 16%' onclick={pdfRedirect}>PDF version</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <template if:true={currentResult.haveIssues}>
+                                        <div class='issue issue_header'>
+                                            <div class='priority_column'>
+                                                <b>PRIORITY LEVEL</b>
+                                            </div>
+                                            <div class='issue_column'>
+                                                <b>OBSERVED ISSUE</b>
+                                            </div>
+                                            <div class='inspector_note_column'>
+                                                <b>NOTE</b>
+                                            </div>
+                                            <div class='recommendation_column'>
+                                                <b>RECOMMENDATION</b>
+                                            </div>
+                                            <div class='cost_column'>
+                                                <b>ESTIMATED COST</b>
+                                            </div>
+                                        </div>
+                                    <div class='issue_table'>
+                                        <template for:each={currentResult.issues} for:item='issue'>
+                                            <div key={issue.answerId} class='issue'>
+                                                <div class='priority_column'>
+                                                    <p class='priority_cell' style={issue.cellStyle}>{issue.threatPoints}</p>
+                                                </div>
+                                                <div class='issue_column'>
+                                                    <lightning-formatted-rich-text value={issue.issue}>
+
+                                                    </lightning-formatted-rich-text>
+                                                    <template if:true={issue.haveIssueImage}>
+                                                        <template if:false={issue.issueAttachment.pdf}>
+                                                            <p>
+                                                                <lightning-icon icon-name='doctype:image' size='small'></lightning-icon>
+                                                                <a href={issue.issueAttachment.link} target='_blank' style='margin-left: 10px'>{issue.issueAttachment.title}</a>
+                                                            </p>
+                                                        </template>
+                                                        <template if:true={issue.issueAttachment.pdf}>
+                                                            <p>
+                                                                <lightning-icon icon-name='doctype:pdf' size='small'></lightning-icon>
+                                                                <a href={issue.issueAttachment.link} target='_blank' style='margin-left: 10px'>{issue.issueAttachment.title}</a>
+                                                            </p>
+                                                        </template>
+                                                    </template>
+                                                </div>
+                                                <div class='inspector_note_column'>
+                                                    <lightning-formatted-rich-text value={issue.inspectorNote}>
+
+                                                    </lightning-formatted-rich-text>
+                                                    <template if:true={issue.haveNoteImage}>
+                                                        <template if:false={issue.noteAttachment.pdf}>
+                                                            <p>
+                                                                <lightning-icon icon-name='doctype:image' size='small'></lightning-icon>
+                                                                <a href={issue.noteAttachment.link} target='_blank' style='margin-left: 10px'>{issue.noteAttachment.title}</a>
+                                                            </p>
+                                                        </template>
+                                                        <template if:true={issue.noteAttachment.pdf}>
+                                                            <p>
+                                                                <lightning-icon icon-name='doctype:pdf' size='small'></lightning-icon>
+                                                                <a href={issue.noteAttachment.link} target='_blank' style='margin-left: 10px'>{issue.noteAttachment.title}</a>
+                                                            </p>
+                                                        </template>
+                                                    </template>
+                                                </div>
+                                                <div class='recommendation_column'>
+                                                    <lightning-formatted-rich-text value={issue.recommendation}>
+
+                                                    </lightning-formatted-rich-text>
+                                                    <template if:true={issue.haveRecImage}>
+                                                        <template if:false={issue.recAttachment.pdf}>
+                                                            <p>
+                                                                <lightning-icon icon-name='doctype:image' size='small'></lightning-icon>
+                                                                <a href={issue.recAttachment.link} target='_blank' style='margin-left: 10px'>{issue.recAttachment.title}</a>
+                                                            </p>
+                                                        </template>
+                                                        <template if:true={issue.recAttachment.pdf}>
+                                                            <p>
+                                                                <lightning-icon icon-name='doctype:pdf' size='small'></lightning-icon>
+                                                                <a href={issue.recAttachment.link} target='_blank' style='margin-left: 10px'>{issue.recAttachment.title}</a>
+                                                            </p>
+                                                        </template>
+                                                    </template>
+                                                </div>
+                                                <div class='cost_column'>
+                                                    <template if:true={issue.havePrices}>
+                                                        <template for:each={issue.prices} for:item='price'>
+                                                            <lightning-formatted-rich-text key={price.priceId} value={price.priceText}></lightning-formatted-rich-text>
+                                                        </template>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+                <template if:false={currentResult.haveResults}>
+                    <div key={currentResult.resultId} class='emptyText'>
+                        <p>Info will be available after passing this inspection</p>
+                    </div>
+                </template>
+            </div>
+        </template>
+    </div>
+</template>

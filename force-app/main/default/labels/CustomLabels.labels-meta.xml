@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>BE_Email_No_Exist</fullName>
+        <categories>BE User Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BE Email No Exist</shortDescription>
+        <value>Your email not exist.</value>
+    </labels>
+    <labels>
+        <fullName>BE_Hotel_URL</fullName>
+        <categories>BE Hotel Setting</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BE_Hotel_URL</shortDescription>
+        <value>http://booking-ninjas-tso.force.com/</value>
+    </labels>
+    <labels>
+        <fullName>BE_No_Rooms_Available</fullName>
+        <categories>BE_Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BE No Rooms Available</shortDescription>
+        <value>We regret to inform you that no rooms are available on your requested dates, please try searching other dates</value>
+    </labels>
+    <labels>
+        <fullName>BE_User_Email_Confirm</fullName>
+        <categories>BE User Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BE_User_Email_Confirm</shortDescription>
+        <value>Your email is already exists in our system, please check your email to confirm owner</value>
+    </labels>
+    <labels>
+        <fullName>BE_User_Email_Empty</fullName>
+        <categories>BE User Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BE_User_Email_Empty</shortDescription>
+        <value>Please enter your email.</value>
+    </labels>
+    <labels>
+        <fullName>BE_User_Exist_User</fullName>
+        <categories>BE User Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BE User Exist User</shortDescription>
+        <value>Username or email already exists.</value>
+    </labels>
+    <labels>
+        <fullName>BE_User_Inactive</fullName>
+        <categories>BE User Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BE User Inactive</shortDescription>
+        <value>Your account is inactivated.</value>
+    </labels>
+    <labels>
+        <fullName>BE_User_Login</fullName>
+        <categories>BE User Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BE User Login</shortDescription>
+        <value>Your password has changed successful! You could try to login.</value>
+    </labels>
+    <labels>
+        <fullName>BE_User_No_Exist</fullName>
+        <categories>BE User Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BE User No Exist</shortDescription>
+        <value>Your username is not exist.</value>
+    </labels>
+    <labels>
+        <fullName>BE_User_Pass_Email</fullName>
+        <categories>BE User Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BE User Pass Email</shortDescription>
+        <value>We sent you a link to reset your password. Please check your email.</value>
+    </labels>
+    <labels>
+        <fullName>BE_User_Pass_Fill</fullName>
+        <categories>BE User Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BE User Pass Fill</shortDescription>
+        <value>Enter your email address below and we will send you a link to reset your password.</value>
+    </labels>
+    <labels>
+        <fullName>BE_User_Pass_Incorrect</fullName>
+        <categories>BE User Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BE User Pass Incorrect</shortDescription>
+        <value>Your password is incorrect.</value>
+    </labels>
+    <labels>
+        <fullName>BE_User_Pass_Not_Matched</fullName>
+        <categories>BE User Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BE User Pass Not Matched</shortDescription>
+        <value>Password is not matched.</value>
+    </labels>
+    <labels>
+        <fullName>BE_User_Password_Empty</fullName>
+        <categories>BE User Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BE User Password Empty</shortDescription>
+        <value>Please enter your password.</value>
+    </labels>
+    <labels>
+        <fullName>BE_User_Username_Empty</fullName>
+        <categories>BE User Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BE User Username Empty</shortDescription>
+        <value>Please enter your username.</value>
+    </labels>
+    <labels>
+        <fullName>Default_Currency</fullName>
+        <categories>Site Settings</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Default Currency</shortDescription>
+        <value>EUR</value>
+    </labels>
+    <labels>
+        <fullName>Hotel_Background</fullName>
+        <categories>Site Settings</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Hotel Background</shortDescription>
+        <value>https://trello-attachments.s3.amazonaws.com/5c385428590af82646588501/5c3f81bd0bc79056e6ed170c/70644d04cfd2399868f595ffc4ac76bc/amsterdam.jpg</value>
+    </labels>
+    <labels>
+        <fullName>Hotel_Logo</fullName>
+        <categories>Site Settings</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Hotel Logo</shortDescription>
+        <value>https://www.101domain.com/images/flags/large/HOTEL.png</value>
+    </labels>
+</CustomLabels>

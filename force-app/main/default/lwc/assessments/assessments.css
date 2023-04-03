@@ -1,0 +1,86 @@
+/**
+ * Created by Мастер Эш on 16.12.2019.
+ */
+.cover {
+    width: 100%;
+    height: 8%;
+    background: #EFF2F7
+}
+
+.questions_holder
+{
+    height: 50vh;
+    overflow-y: auto;
+}
+
+.assessmentItem:hover {
+    background-color: rebeccapurple;
+    cursor: pointer;
+}
+
+.libItem:hover {
+    cursor: pointer;
+    background-color: darkorange;
+}
+
+.answeredItem {
+    opacity: 0.5;
+}
+
+.questionItem:hover {
+    cursor: pointer;
+    background-color: deeppink;
+}
+
+.libs {
+    margin-top: 25px;
+}
+
+.lib {
+    margin-top: 15px;
+}
+
+.tab-label {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.slds-progress-bar__value {
+    background: lightgreen;
+}
+
+.modal-header {
+    background-color: aliceblue;
+    -webkit-text-stroke: thick;
+}
+
+.circle-button {
+    border-radius: .99rem;
+}
+
+.circle-button-submit:hover {
+    background-color: lightgreen;
+}
+
+.circle-button-skip:hover {
+    background-color: lightgrey;
+}
+
+.white-button {
+    background-color: white;
+    color: blue;
+}
+
+.white-button:hover {
+    background-color: lightgreen;
+}
+
+.remove:hover {
+    background-color: indianred;
+    color: cornsilk;
+}
+
+.note_title {
+    padding: 10px;
+    font-size: large;
+}

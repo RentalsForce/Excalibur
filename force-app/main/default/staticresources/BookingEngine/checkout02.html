@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="description">
+    <meta name="keywords">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="INDEX,FOLLOW">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,600">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/lightbox.css">
+    <link rel="stylesheet" href="./css/datepicker.min.css">
+    <link rel="stylesheet" href="./css/timepicker.min.css">
+    <link rel="stylesheet" href="./css/content.css">
+    <!-- JS-->
+    <!-- jQueryの読み込み-->
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- 上記CDNダウン時のフォールバック-->
+    <script type="text/javascript"><!-- window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')-->
+      
+    </script>
+  </head>
+  <body>
+    <div class="page-checkout" id="wrapper">
+      <header class="header">
+        <div class="container clearfix">
+          <button><img src="./images/btn_menu.png" alt=""></button>
+          <div class="header__right"><a class="sign-in md-trigger" href="javascript:void(0)" data-modal="modal-login">Sign In</a><a class="book-now" href="#"><span>Book Now</span></a>
+          </div>
+          <!-- end header__right-->
+        </div>
+      </header>
+      <!-- end header-->
+      <!-- end header-->
+      <main class="main__content" role="main">
+        <div class="container">
+          <div class="page__title"><a class="back" href="./listpage.html">Back</a>
+            <h2>Checkout</h2>
+          </div>
+          <div class="head">
+            <div class="process-step step02">
+              <div class="al">
+                <div class="content">
+                  <p><span>Your Stay: </span>11/22/2017 - 11/30/2017<span>Guests: </span>1 Adult</p>
+                  <p><span>Number of nights:</span>7</p>
+                </div>
+              </div>
+              <div class="number"><span>1</span><span>2</span><span>3</span></div>
+              <div class="line"></div>
+            </div>
+          </div>
+          <div class="body">
+            <h3>Payment information</h3>
+            <form action="#">
+              <div class="inner">
+                <div class="block">
+                  <div class="wrap">
+                    <div class="col-2">
+                      <dl>
+                        <dt>Payment type</dt>
+                        <dd>
+                          <select name="###">
+                            <option value="Select">Select</option>
+                          </select>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>Cardholder<br>name</dt>
+                        <dd>
+                          <select name="###">
+                            <option value="Select">Select</option>
+                          </select>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>
+                           Expiration<br>date</dt>
+                        <dd>
+                          <select class="sm" name="###">
+                            <option value="Select">Select</option>
+                          </select>
+                          <select class="sm" name="###">
+                            <option value="Select">Select</option>
+                          </select>
+                        </dd>
+                      </dl>
+                    </div>
+                    <div class="col-2">
+                      <dl>
+                        <dt>card number</dt>
+                        <dd>
+                          <input type="text" name="###">
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt>security code</dt>
+                        <dd>
+                          <input type="text" name="###">
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </div>
+                <div class="block">
+                  <h4>Additional details</h4>
+                  <div class="wrap">
+                    <dl>
+                      <dt>Purpose of Visit</dt>
+                      <dd class="center">
+                        <div class="input-radio">
+                          <input id="pu01" type="radio" name="pu-group" checked="">
+                          <label for="pu01">Business</label>
+                        </div>
+                        <div class="input-radio">
+                          <input id="pu01" type="radio" name="pu-group" checked="">
+                          <label for="pu01">Leisure</label>
+                        </div>
+                      </dd>
+                    </dl>
+                    <dl class="break">
+                      <dt>Room request</dt>
+                      <dd>
+                        <p class="hold">Hold down Ctrl to select multiple room requests, these requests cannot be guaranteed</p>
+                        <textarea name="" cols="50" rows="5">Connecting rooms - upon availability Rollaway bed- feels may apply</textarea>
+                      </dd>
+                    </dl>
+                    <dl class="dblock">
+                      <dt>comments</dt>
+                      <dd>
+                        <textarea class="auto" name="" cols="50" rows="10"></textarea>
+                      </dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix">
+                <button class="next" type="submit">Next Step<img src="./images/arrow_next_white.png" alt=""></button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+      <!-- end main--><div class="md-modal md-effect-1" id="modal-login">
+<div class="md-content login">
+<div>
+<button class="md-close"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
+      <div id="form">
+        <form action="" method="post">
+          <div class="logo">Logo</div>
+          <div class="form-item">
+            <p class="formLabel">Username</p>
+            <input class="form-style" id="username" type="text" name="username">
+          </div>
+          <div class="form-item">
+            <p class="formLabel">Password</p>
+            <input class="form-style" id="password" type="password" name="password">
+          </div>
+          <div class="form-item">
+            <input class="login" type="submit" value="Log In">
+          </div>
+          <div class="form-item">
+            <p><a href="#"><small>Forgot Password ?</small></a></p>
+          </div>
+          <div class="form-item bottom"><span>Not a customer?</span><a href="./signup.html"><small>Register</small></a></div>
+        </form>
+      </div></div>
+</div>
+</div>
+<div class="md-overlay"></div>
+      <footer class="footer" id="footer">
+        <div class="container">
+          <ul class="fnav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+          <div class="social">
+            <h3>Follow us</h3>
+            <ul>
+              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+          <div class="join">
+            <h3>Join now</h3>
+            <form class="form" action="#" method="post">
+              <input type="email" name="###">
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+        <div class="copy">
+          <p>Copyright 2017 · All rights reserved.</p>
+        </div>
+      </footer>
+      <!-- end footer-->
+    </div>
+    <script type="text/javascript" src="./js/modernizr.js"></script>
+    <script type="text/javascript" src="./js/lightbox.js"></script>
+    <script type="text/javascript" src="./js/datepicker.min.js"></script>
+    <script type="text/javascript" src="./js/timepicker.min.js"></script>
+    <script type="text/javascript" src="./js/vendor.min.js"></script>
+    <script type="text/javascript" src="./js/common.js"></script>
+  </body>
+</html>

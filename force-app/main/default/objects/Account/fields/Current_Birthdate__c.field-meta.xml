@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_Birthdate__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(DATE(YEAR(TODAY()),MONTH(PersonBirthdate),DAY(PersonBirthdate)) &lt; TODAY(), DATE(YEAR(TODAY())+1,MONTH(PersonBirthdate),DAY(PersonBirthdate)), DATE(YEAR(TODAY()),MONTH(PersonBirthdate),DAY(PersonBirthdate)))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Current Birthdate</label>
+    <required>false</required>
+    <type>Date</type>
+</CustomField>

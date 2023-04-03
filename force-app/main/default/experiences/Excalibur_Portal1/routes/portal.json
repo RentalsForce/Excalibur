@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "3495f184-e75b-4850-8ccd-a71006af78dc",
+  "appPageId" : "3a00936a-8576-4594-83af-20a3b927868b",
+  "configurationTags" : [ ],
+  "id" : "dc4de241-102d-45df-86b0-2ebfaebfe661",
+  "label" : "Portal",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-base2",
+  "type" : "route",
+  "urlPrefix" : "base2"
+}

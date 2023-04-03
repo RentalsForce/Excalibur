@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SamlSsoConfig xmlns="http://soap.sforce.com/2006/04/metadata">
+    <errorUrl>https://excaliburusallc.my.salesforce.com?login=1</errorUrl>
+    <identityLocation>SubjectNameId</identityLocation>
+    <identityMapping>UserId</identityMapping>
+    <issuer>https://bookingninjas.my.salesforce.com</issuer>
+    <loginUrl>https://bookingninjas.my.salesforce.com/idp/endpoint/HttpPost</loginUrl>
+    <name>bookingninjas SAML SSO Setting</name>
+    <oauthTokenEndpoint>https://excaliburusallc.my.salesforce.com/services/oauth2/token</oauthTokenEndpoint>
+    <redirectBinding>false</redirectBinding>
+    <requestSigningCertId>0P16g000000KfK9</requestSigningCertId>
+    <salesforceLoginUrl>https://excaliburusallc.my.salesforce.com</salesforceLoginUrl>
+    <samlEntityId>https://saml.salesforce.com/00D6g000000EnB8EAK</samlEntityId>
+    <samlVersion>SAML2_0</samlVersion>
+    <useConfigRequestMethod>false</useConfigRequestMethod>
+    <useSameDigestAlgoForSigning>false</useSameDigestAlgoForSigning>
+    <userProvisioning>false</userProvisioning>
+    <validationCert>MIIEcjCCA1qgAwIBAgIOAXR4w6//AAAAABsuXJswDQYJKoZIhvcNAQELBQAwfjEWMBQGA1UEAwwNU2FsZXNmb3JjZVNTTzEYMBYGA1UECwwPMDBEMzYwMDAwMDFINEU5MRcwFQYDVQQKDA5TYWxlc2ZvcmNlLmNvbTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzELMAkGA1UECAwCQ0ExDDAKBgNVBAYTA1VTQTAeFw0yMDA5MTAxNjA1MjRaFw0yMTA5MTAxMjAwMDBaMH4xFjAUBgNVBAMMDVNhbGVzZm9yY2VTU08xGDAWBgNVBAsMDzAwRDM2MDAwMDAxSDRFOTEXMBUGA1UECgwOU2FsZXNmb3JjZS5jb20xFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xCzAJBgNVBAgMAkNBMQwwCgYDVQQGEwNVU0EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCguZ7Oh2VHyK5asVotnXLp3z6moGw7Tm1d4biLbC2tUENNXNPJ2aexnQEC28BzscRefjG/veOC3vZxd+piLFTWWVmWqsJuyt1PIDTbIFlagfyoze0RpSAUVay1tytwsUbr2kfNeAEwyw8TdhnrXPqz3dnHRVCBRlmS2ijnYNml4YLPYjKaQUh+VcY0MqkSIy2cE5g5yBLopUAJTvy87iD3l1d3mKGG5Y9SnmHv1f4WmGkRtaM1G+jBZYkYDh9uUuyjS1udfD7nkp6nX5UKytFz8Y6Tg3vQi30Okn/y3anmDg9uECTKFMiZE6QBayW/Ucuy4R1it1AHL1PMr+MDGjjhAgMBAAGjge0wgeowHQYDVR0OBBYEFPaJEmiotp/JLo+tnP9Clhb+w1ioMA8GA1UdEwEB/wQFMAMBAf8wgbcGA1UdIwSBrzCBrIAU9okSaKi2n8kuj62c/0KWFv7DWKihgYOkgYAwfjEWMBQGA1UEAwwNU2FsZXNmb3JjZVNTTzEYMBYGA1UECwwPMDBEMzYwMDAwMDFINEU5MRcwFQYDVQQKDA5TYWxlc2ZvcmNlLmNvbTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzELMAkGA1UECAwCQ0ExDDAKBgNVBAYTA1VTQYIOAXR4w6//AAAAABsuXJswDQYJKoZIhvcNAQELBQADggEBAFdJX2mosPxwVzGxyp0CwP4J7wyIJRMBwO4JFFzTr4MuMZDM8Z2gNHu4urpG4UcJQT9ZmgmX60okt5aq2yx55iGyQgnNZg888jfzJxnyVQtqhjUwSsEX5GBxMzUWXcf6T8OYjfdbhKH40KLYXF03HfiRQCe0QtN2bixeBPbyHrcaGXOer3dg2SAbdvbWJqxP3oSYM6TikmQKRlSLOA6b7YrpNIzmsnzjXp3xNymz0V84kssICW/eMdUKuBBQN0vDY1QzuJzroOFWx2riwKKGPbA1eNMl9wGAN/3bAzjbh6tEvS+LiVg2BSj324aWJ9R9yRUKEAJs5ChvomVG05IeVOs=</validationCert>
+</SamlSsoConfig>

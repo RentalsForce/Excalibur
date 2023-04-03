@@ -1,0 +1,119 @@
+/**
+ * Created by Artsiom.Klimanski on 12/13/2019.
+ */
+.cover {
+    position:fixed;
+    padding:0;
+    margin:0;
+
+    top:0;
+    left:0;
+
+    width: 100%;
+    height: 83%;
+    background: burlywood;
+}
+
+.navBar {
+    height: 100%;
+    background-color: #5C9AFF !important;
+}
+
+.navHeader {
+    height: 110px !important;
+    background-color: #4B89EE;
+}
+
+.rightHeader {
+    height: 110px!important;
+    width: 100%;
+    background-color: white;
+    position: relative;
+}
+
+.subHeader {
+    height: 110px!important;
+    width: 100%;
+    background-color: #F7F8FA;
+    position: relative;
+    display: flex;
+}
+
+.companyName {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.container {
+    top: 35%;
+    position: absolute;
+}
+
+.customAvatar {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-top: 5%;
+}
+
+.subHeaderItem {
+    margin-left: 15px;
+}
+
+.customAvatarSub {
+    width: 5rem;
+    height: 5rem;
+    margin-top: 16%;
+}
+
+.headerItem {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.headerItem:hover {
+    background-color: snow;
+}
+
+.itemText {
+    margin-left: 25px;
+}
+
+.searchInput {
+    float: right;
+    width: 20%;
+}
+
+.input {
+    border-radius: 9999em;
+}
+
+.leftList {
+    height: 100vh;
+}
+
+.buttonGroup {
+    display: flex;
+    margin-left: auto;
+}
+
+.circleButton {
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    margin-top: 5px;
+    margin-right: 5px;
+    background-color: white;
+    border: grey 2px solid;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.itemIcon {
+    background-color: transparent !important;
+}
+
+.circleButton:hover {
+    background-color: darkorange;
+}

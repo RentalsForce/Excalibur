@@ -1,0 +1,217 @@
+<apex:page docType="html-5.0" showHeader="false" sidebar="false" standardStylesheets="false" applyBodyTag="false" applyHtmlTag="false">
+
+     <!-- Template -->
+    <apex:composition template="Ex_Template">
+        <!-- Define content -->
+        <apex:define name="ex_content">
+        
+            <script>
+                $(function () {
+                    $('body').removeClass('no-bg');
+                    $('header').addClass('no-bg');
+                });
+            </script>
+        
+            <div class="bnr" id="bnr">
+                <div class="container">
+                    <h1>How it works</h1>
+                    <p>Watch our video</p>
+                    <div class="row justify-content-center">
+                        <a class="video__img" href="">
+                            <img alt="Video" src="https://dwu9sd79a6vgg.cloudfront.net/img/mainpage-video-img.png" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="process">
+                <div class="container">
+                    <div class="row justify-content-between">               
+                        <div class="col-lg-4 pb-wrap">
+                            <span class="process-tag__step">1</span>
+                            <div class="process-tag">
+                                <div class="process-tag__img">
+                                <figure>
+                                    <img src="https://dwu9sd79a6vgg.cloudfront.net/img/inspect.png" alt=""/>
+                                </figure>
+                            </div>
+                                <article>   
+                                    <h3>Inspect</h3>
+                                    <p>Our team conducts a comprehensive, 1,000+ point inspection of the most common compliance pitfalls including:</p>
+                                        <ul>
+                                            <li>Regulatory Compliance</li>
+                                            <li>OSHA/Work Safety</li>
+                                            <li>Employment Practices</li>
+                                            <li>Wage &#x26; Hour</li>
+                                            <li>ADA Compliance </li>
+                                            <li>Website Compliance</li>
+                                            <li>Guest Relations Practices</li>
+                                            <li>Insurance Coverage Review</li>
+                                            <li>Cyber-Security Compliance</li>
+                                            <li>Data Privacy Compliance</li>
+                                            <li>Premises Liability </li>
+                                            <li>Food Safety</li>
+                                            <li>Alcohol Compliance</li>
+                                            <li>Corporate Governance</li>
+                                            <li>And More</li>
+                                        </ul>
+                                </article>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 pb-wrap">
+                            <span class="process-tag__step">2</span>
+                            <div class="process-tag">
+                                <div class="process-tag__img">
+                                <figure>
+                                    <img src="https://dwu9sd79a6vgg.cloudfront.net/img/repot.png" alt=""/>
+                                </figure>
+                            </div>
+                                <article>   
+                                    <h3>Report</h3>
+                                    <p>Within 24 hours, we give you an easy-to-read inspection report identifying all 
+                                        potential non-compliance discovered by the inspection. The report includes:</p>
+                                        <ul>
+                                            <li>Your overall compliance score in each inspection category.</li>
+                                            <li>Proposed solutions to resolve each compliance issue. </li>
+                                            <li>Cost estimates for each proposed solution.</li>
+                                            <li>The priority level of each compliance issue, so that you may prioritize resolution of those issues that need immediate attention.</li>
+                                        </ul>
+                                    <p>The report is private and confidential. For an additional fee, your report may also be protected by attorney-client privilege, one of the highest protections afforded under the law.</p>                
+                                </article>
+                                <div class="text_center">
+                                    <a href="#" class="secondary-button">Learn more</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 pb-wrap">
+                            <span class="process-tag__step">3</span>
+                            <div class="process-tag">
+                                <div class="process-tag__img">
+                                <figure>
+                                    <img src="https://dwu9sd79a6vgg.cloudfront.net/img/resolve.png" alt=""/>
+                                </figure>
+                            </div>
+                                <article>   
+                                    <h3>Resolve</h3>
+                                    <p>We strive to propose compliance solutions that are both practical and affordable. </p>
+                                    <p>As our client, you will have access to our proprietary toolkit of documents, forms and resources at no additional charge. Fortunately, using our toolkit, most compliance issues can be resolved in-house for under $100. </p>
+                                    <p>For more complex issues or where further investigation is recommended, you will have access to our vast network of partners and specialists, many of whom have agreed to provide our clients with pre-negotiated, preferred rates.</p>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 pb-wrap">
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <h2 class="title title__line-left">testimonials</h2>
+                                    <p class="section-title">What people say about our company?</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-lg-7 pb-wrap">
+                            <div class="testimonial-slider" data-slick='{"slidesToShow": 1, "slidesToScroll": 1}'>
+                                <div class="testimonial-slide">
+                                    <p class="testimonial-slide__text">"This Company created an e-commerce site with the tools to make our business a success, with innovative ideas we feel that our site has unique elements that make us stand out from the crowd."</p>
+                                    <div class="row justify-content-start no-gutters">
+                                        <div class="col-auto">
+                                            <img src="https://dwu9sd79a6vgg.cloudfront.net/img/testimonial-photo-1.png" alt="User photo" class="testimonial-slide__photo"/>
+                                        </div>
+                                        <div class="col-auto">
+                                            <p class="testimonial-slide__name">Priscilla Williamson</p>
+                                            <p class="testimonial-slide__company">TMG Company</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="testimonial-slide">
+                                    <p class="testimonial-slide__text">"This Company created an e-commerce site with the tools to make our business a success, with innovative ideas we feel that our site has unique elements that make us stand out from the crowd."</p>
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <img src="https://dwu9sd79a6vgg.cloudfront.net/img/testimonial-photo-1.png" alt="User photo" class="testimonial-slide__photo"/>
+                                        </div>
+                                        <div class="col-auto">
+                                            <p class="testimonial-slide__name">Priscilla Williamson</p>
+                                            <p class="testimonial-slide__company">TMG Company</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="testimonial-slide">
+                                    <p class="testimonial-slide__text">"This Company created an e-commerce site with the tools to make our business a success, with innovative ideas we feel that our site has unique elements that make us stand out from the crowd."</p>
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <img src="https://dwu9sd79a6vgg.cloudfront.net/img/testimonial-photo-1.png" alt="User photo" class="testimonial-slide__photo"/>
+                                        </div>
+                                        <div class="col-auto">
+                                            <p class="testimonial-slide__name">Priscilla Williamson</p>
+                                            <span class="testimonial-slide__company">TMG Company</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clients text_center">
+                <div class="container">
+                    <h2 class="title title__line-center">our clients</h2>
+                    <p class="section-title">Whom we have already helped</p>
+                    <div class="clients-slider" data-slick='{"slidesToShow": 5, "slidesToScroll": 1}'>
+                        <div class="clients-slide"><img src="https://dwu9sd79a6vgg.cloudfront.net/img/client-bg.png" alt="Cliet Logo"/></div>
+                        <div class="clients-slide"><img src="https://dwu9sd79a6vgg.cloudfront.net/img/client-setai.png" alt="Cliet Logo"/></div>
+                        <div class="clients-slide"><img src="https://dwu9sd79a6vgg.cloudfront.net/img/client-marlin.png" alt="Cliet Logo"/></div>
+                        <div class="clients-slide"><img src="https://dwu9sd79a6vgg.cloudfront.net/img/client-victoria.png" alt="Cliet Logo"/></div>
+                        <div class="clients-slide"><img src="https://dwu9sd79a6vgg.cloudfront.net/img/client-jveys.png" alt="Cliet Logo"/></div>
+                        <div class="clients-slide"><img src="https://dwu9sd79a6vgg.cloudfront.net/img/client-bg.png" alt="Cliet Logo"/></div>
+                        <div class="clients-slide"><img src="https://dwu9sd79a6vgg.cloudfront.net/img/client-setai.png" alt="Cliet Logo"/></div>
+                        <div class="clients-slide"><img src="https://dwu9sd79a6vgg.cloudfront.net/img/client-marlin.png" alt="Cliet Logo"/></div>
+                        <div class="clients-slide"><img src="https://dwu9sd79a6vgg.cloudfront.net/img/client-victoria.png" alt="Cliet Logo"/></div>
+                        <div class="clients-slide"><img src="https://dwu9sd79a6vgg.cloudfront.net/img/client-jveys.png" alt="Cliet Logo"/></div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact">
+                <div class="container">
+                    <h2 class="title title__line-left">Contact us</h2>
+                    <p class="section-title">Contact us to get best help</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form class="contact-form" action="">
+                                <input type="text" name="name" id="name" placeholder="Your name"/>
+                                <input type="tel" name="tel" id="tel" placeholder="Phone number"/>
+                                <input type="text" name="subject" id="subject" placeholder="Subject"/>
+                                <textarea name="message" id="message" cols="30" rows="6">Describe your legal problem</textarea>
+                                <button class="button">send</button>
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-xl-7 offset-lg-1">
+                                    <p class="contact-text"> Or get in touch with us via means of communication listed below</p>
+                                        <div class="contact-item">
+                                        <figure><img src="https://dwu9sd79a6vgg.cloudfront.net/img/contact-phone.png" alt="Phone image"/></figure>
+                                        <p>(219) 555-0114, (834) 666-5465</p>
+                                    </div>
+                                    <div class="contact-item">
+                                        <figure><img src="https://dwu9sd79a6vgg.cloudfront.net/img/contact-email.png" alt="Email image"/></figure>
+                                        <p>request@excalibur.com</p>
+                                    </div>
+                                    <div class="contact-item">
+                                        <figure><img src="https://dwu9sd79a6vgg.cloudfront.net/img/contact-location.png" alt="Location image"/></figure>
+                                        <p>2722 Camden Ave undefined Austin, Idaho 78097 US</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </apex:define>
+    </apex:composition>
+    
+</apex:page>

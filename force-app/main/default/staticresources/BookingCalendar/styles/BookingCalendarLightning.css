@@ -1,0 +1,21 @@
+body .rich-tabhdr-cell-active, .slds-scope .rich-tabhdr-cell-active {
+    border-bottom-color: #0070d2 !important;
+    font-weight: 700 !important;
+    color: #3e3e3c !important;
+}
+body select, input{
+    min-width: 10rem !important;
+}
+.rich-tab-active  , .rich-tab-inactive , .rich-tabpanel-content {
+    background-image: none;
+    background-color: transparent;
+    border-style: none;
+    padding: 0;
+}
+.rich-tabpanel-content {
+    color: #3e3e3c !important;
+    font-family: "Salesforce Sans",Arial,sans-serif;
+}
+.rich-tabhdr-side-cell {
+    border-top-style: none;        
+}

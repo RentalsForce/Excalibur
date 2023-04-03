@@ -1,0 +1,63 @@
+.draggedItem{
+    display:block;
+    width: 100%;
+    cursor: pointer;
+}
+.bg-change {
+    background-color: grey!important;
+}
+.grid  {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 12px; 
+}
+.grid th,.grid td{
+    text-align: center;
+    white-space: normal!important;
+    display: table-cell;
+    line-height: 20px;
+    border-color: #eaeaea;
+    border: 2px solid #eaeaea;
+    max-width: 15px;
+    overflow: hidden;
+    border-radius: 5px;
+}   
+.grid td:hover {
+    background-color:#eee;
+}
+.grid tr{
+    background-color: rgb(255, 255, 255);
+    height: 30px;
+}
+.grid .reservationLink{
+    overflow: hidden;
+    white-space: nowrap;
+    text-decoration:none; 
+    color:white;
+}
+.roomTypeGrid  {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 12px; 
+}    
+.roomTypeGrid th,.roomTypeGrid td{
+    text-align: center;
+    white-space: normal!important;
+    display: table-cell;
+    line-height: 20px;
+    border-color: #eaeaea;
+    border: 2px solid #eaeaea;
+}       
+.roomTypeGrid tr th{
+    background-color: rgb(255, 255, 255);
+}    
+.totalAvailabilityRow{
+    background-color: #FE3636;
+}
+.grandTotalAvailabilityRow{
+    float: right;
+    font-size: 13px;
+    font-weight: 700;
+}    
+.activeTab {font-size:15px; }
+.inactiveTab {font-size:15px; } 

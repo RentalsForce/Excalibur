@@ -1,0 +1,89 @@
+<!--
+ - Created by Artsiom.Klimanski on 12/13/2019.
+ -->
+
+<!-- Work Space -->
+<template>
+    <div style='display: flex'>
+
+<!--        <div class="navBar" style="width:320px;background-color:#FAFAFB">-->
+<!--            <nav class="slds-nav-vertical slds-nav-vertical_shade" aria-label="Sub page">-->
+<!--                <div class="slds-nav-vertical__section">-->
+<!--                    <h2 id="entity-header" class="slds-nav-vertical__title navHeader">-->
+<!--                        <span class="slds-avatar slds-avatar_circle slds-avatar_large customAvatar">-->
+<!--                            <img alt="Person name" src={avatar} title="Person name" />-->
+<!--                        </span>-->
+<!--                    </h2>-->
+<!--                    <ul aria-describedby="entity-header" class='leftList'>-->
+<!--                        <li class='headerItem' data-type='assessments' onclick={changeComponent}>-->
+<!--                            <lightning-icon icon-name='standard:iot_context' class='itemIcon' size='large'></lightning-icon>-->
+<!--                            <span class='itemText'>ASSESSMENTS</span>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </nav>-->
+<!--        </div>-->
+
+        <div class='content' style='width: 100%'>
+            <div class='rightHeader'>
+                <div class='logo'>
+                    <img src={logo} style='margin: 1.5%'/>
+                </div>
+                <div class='searchInput'>
+                    <div class="slds-form-element container">
+                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+                            <lightning-icon class="slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default" icon-name='utility:search' size='x-small'></lightning-icon>
+                            <input type="text" id="text-input-id-1" placeholder="Type for search" class="slds-input input"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='subHeader'>
+                <div class='subHeaderItem'>
+                    <span class="slds-avatar slds-avatar_circle slds-avatar_large customAvatarSub">
+                        <img alt="Person name" src={avatar} title="Person name" />
+                    </span>
+                </div>
+                <div class='subHeaderItem'>
+                    <template if:false={showNameInput}>
+                        <h2 class='companyName' style='margin-top: 25px'>{userName}</h2>
+                    </template>
+                    <template if:true={showNameInput}>
+                        <div style='padding: 10%'>
+                            <lightning-input value={userName} label='Change Name' placeholder='Enter new Name' onkeyup={nameInputChange}></lightning-input>
+                        </div>
+                    </template>
+                </div>
+                <div class='buttonGroup subHeaderItem'>
+                    <template if:false={showNameInput}>
+                        <a class="circleButton" href="#" onclick={changeName}>
+                            <span>
+                                <lightning-icon icon-name='utility:edit' size='small' style="margin-top: 20%"></lightning-icon>
+                            </span>
+                        </a>
+                        <a class="circleButton" href="#" onclick={logOut}>
+                            <span>
+                                <lightning-icon icon-name='utility:logout' size='small' style="margin-top: 20%"></lightning-icon>
+                            </span>
+                        </a>
+                    </template>
+                    <template if:true={showNameInput}>
+                        <a class="circleButton" href="#" onclick={closeChange}>
+                            <span>
+                                <lightning-icon icon-name='utility:close' size='small' style="margin-top: 20%"></lightning-icon>
+                            </span>
+                        </a>
+                        <a class="circleButton" href="#" onclick={setNewName}>
+                            <span>
+                                <lightning-icon icon-name='utility:change_owner' size='small' style="margin-top: 20%"></lightning-icon>
+                            </span>
+                        </a>
+                    </template>
+                </div>
+            </div>
+            <template if:true={views.assessments}>
+                <c-assessments onrefresh={refresh}></c-assessments>
+            </template>
+        </div>
+    </div>
+</template>

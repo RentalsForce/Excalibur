@@ -1,0 +1,217 @@
+/**
+ * Created by Artsiom.Klimanski on 12/12/2019.
+ */
+.cover {
+    position:fixed;
+    padding:0;
+    margin:0;
+
+    top:0;
+    left:0;
+
+    width: 100%;
+    height: 100%;
+}
+
+.header {
+    text-align: center;
+}
+
+.linksBlock {
+    display: inline-flex;
+    margin-left: 10px;
+}
+
+.headerBlock {
+    display: inline-flex;
+    margin-top: 50px;
+}
+
+.login {
+    display: inline-flex;
+    margin-left: 75px;
+}
+
+.link {
+    margin-left: 20px;
+}
+
+.loginButton {
+    margin-left: 35px;
+}
+
+.loginCard {
+    width: 560px;
+    max-width: 100%;
+    padding: 38px 38px 0;
+    background: none;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 0.6px;
+}
+
+.login_inside {
+    padding: 9px;
+    background: #31474e;
+    box-shadow: 0 0 18px 0 rgba(0, 0, 0, 0.21);
+    border-radius: 9px;
+}
+
+.loginFooter {
+    text-align: left;
+}
+
+.formInput {
+    margin-top: 15px;
+}
+
+.login_content {
+    padding: 30px 20px 0;
+    background: #5a6e74;
+    box-shadow: 0 0 18px 0 rgba(0, 0, 0, 0.21);
+    border-radius: 9px;
+}
+
+.close {
+    text-align: right;
+    left: 25px
+}
+
+.title {
+    font-size: 18px;
+    font-weight: normal;
+    line-height: normal;
+    letter-spacing: 0.18px;
+    text-transform: uppercase;
+    color: #00b5e4;
+}
+
+.title:after {
+    content: '';
+    position: relative;
+    display: block;
+    width: 31px;
+    height: 5px;
+    background-color: #00b5e4;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    left: calc(50% - 15px);
+}
+
+.subtiltle {
+    padding-bottom: 20px;
+    font-family: 'MicrosoftHimalaya', serif;
+    font-size: 50px;
+    letter-spacing: 0.6px;
+    line-height: 1;
+}
+
+.form_input {
+    background: #819195;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 45px;
+    width: 100%;
+    letter-spacing: 0.14px;
+}
+
+::placeholder {
+    color: white;
+    padding: 10px;
+    opacity: 1;
+}
+
+:-ms-input-placeholder {
+    color: white;
+}
+
+.button_container .button {
+    padding-bottom: 22px;
+    width: 100%;
+    font-size: 15px;
+    letter-spacing: 0.8px;
+}
+
+.button {
+    background: linear-gradient(to top, #0b86ab, #41c4e5);
+    color: #fff;
+    min-width: 163px;
+    display: inline-block;
+    position: relative;
+    padding: 17px 5px;
+    border: 2px solid #0b86ab;
+    border-radius: 13px;
+    font-family: 'HelveticaNeueCyr', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.65px;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    line-height: 1;
+    -webkit-appearance: none;
+    text-shadow: 0.5px 0.9px 1px rgba(0, 0, 0, 0.41);
+    box-shadow: 0 0 18px 0 rgba(25, 88, 104, 0.75);
+}
+
+.login-modal__form-checkbox {
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.checkbox {
+    margin-right: 10px;
+    cursor: pointer;
+    padding: 9px;
+    display: inline-block;
+    position: relative;
+    border: 1px solid;
+    -webkit-appearance: none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+}
+
+.checkbox:checked:after {
+    content: '\2714';
+    position: absolute;
+    top: 0px;
+    left: 3px;
+}
+
+.login-modal__form input {
+    background: #819195;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 0.14px;
+}
+
+input {
+    padding-left: 10px;
+}
+
+.login-modal__form label {
+    cursor: pointer;
+    line-height: 1;
+}
+
+.login-modal__form-recovery {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: right;
+}
+
+.login-modal__form-recovery a {
+    text-decoration: none;
+}
+
+a {
+    text-decoration: underline;
+    color: inherit;
+    cursor: pointer;
+}

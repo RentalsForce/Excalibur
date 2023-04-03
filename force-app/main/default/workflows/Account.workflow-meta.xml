@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>BE_Update_Flag_Email_Confirm_Owner</fullName>
+        <field>is_Send_Email_Confirm__c</field>
+        <literalValue>0</literalValue>
+        <name>BE Update Flag Email Confirm Owner</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>BE Confirm Email Owner</fullName>
+        <actions>
+            <name>BE_Update_Flag_Email_Confirm_Owner</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>BE_Send_Email_Confirm_Owner</name>
+            <type>Task</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.is_Send_Email_Confirm__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <tasks>
+        <fullName>BE_Send_Email_Confirm_Owner</fullName>
+        <assignedToType>owner</assignedToType>
+        <description>Sent</description>
+        <dueDateOffset>0</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <priority>Normal</priority>
+        <protected>false</protected>
+        <status>Completed</status>
+        <subject>BE Send Email Confirm Owner</subject>
+    </tasks>
+</Workflow>

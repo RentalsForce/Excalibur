@@ -1,0 +1,165 @@
+<!--
+ - Created by Artsiom.Klimanski on 12/13/2019.
+ -->
+
+<!-- Work Space -->
+<template>
+    <div style='display: flex'>
+
+<!--        <div class="navBar" style="width:320px;background-color:#FAFAFB">-->
+<!--            <nav class="slds-nav-vertical slds-nav-vertical_shade" aria-label="Sub page">-->
+<!--                <div class="slds-nav-vertical__section">-->
+<!--                    <h2 id="entity-header" class="slds-nav-vertical__title navHeader">-->
+<!--                        <span class="slds-avatar slds-avatar_circle slds-avatar_large customAvatar">-->
+<!--                            <img alt="Person name" src={avatar} title="Person name" />-->
+<!--                        </span>-->
+<!--                    </h2>-->
+<!--                    <ul aria-describedby="entity-header" class='leftList'>-->
+<!--                        <li class='headerItem' data-type='dashboards' onclick={changeComponent}>-->
+<!--                            <lightning-icon icon-name='standard:dashboard' class='itemIcon' size='large'></lightning-icon>-->
+<!--                            <span class='itemText'>DASHBOARD</span>-->
+<!--                        </li>-->
+<!--                        <li class='headerItem' data-type='forms' onclick={changeComponent}>-->
+<!--                            <lightning-icon icon-name='standard:document' class='itemIcon' size='large'></lightning-icon>-->
+<!--                            <span class=itemText>FORMS</span>-->
+<!--                        </li>-->
+<!--                        <li class='headerItem' data-type='services' onclick={changeComponent}>-->
+<!--                            <lightning-icon icon-name='standard:skill' class='itemIcon' size='large'></lightning-icon>-->
+<!--                            <span class='itemText'>SERVICES</span>-->
+<!--                        </li>-->
+<!--                        <li class='headerItem' data-type='tasks' onclick={changeComponent}>-->
+<!--                            <lightning-icon icon-name='standard:task' class='itemIcon' size='large'></lightning-icon>-->
+<!--                            <span class='itemText'>TASKS</span>-->
+<!--                        </li>-->
+<!--                        <li class='headerItem' data-type='questions' onclick={changeComponent}>-->
+<!--                            <lightning-icon icon-name='standard:question_feed' class='itemIcon' size='large'></lightning-icon>-->
+<!--                            <span class='itemText'>Q&A</span>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </nav>-->
+<!--        </div>-->
+
+        <div class='content' style='width: 100%'>
+            <div class='rightHeader slds-grid'>
+                <div class='logo'>
+                    <img src={logo} style='margin-top: 3%;margin-left: 3%;'/>
+                </div>
+                <div class='searchInput'>
+                    <div class="slds-form-element container">
+                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+                            <lightning-icon class="slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default" icon-name='utility:search' size='x-small'></lightning-icon>
+                            <input type="text" id="text-input-id-1" placeholder="Type for search" class="slds-input input"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='subHeader'>
+                <div class='subHeaderItem'>
+                    <span class="slds-avatar slds-avatar_circle slds-avatar_large customAvatarSub">
+                        <img alt="Person name" src={avatar} title="Person name" />
+                    </span>
+                </div>
+                <div class='subHeaderItem'>
+                    <template if:false={showNameInput}>
+                        <h2 class='companyName' style='margin-top: 25px'>{userName}</h2>
+                    </template>
+                    <template if:true={showNameInput}>
+                        <div style='padding: 10%'>
+                            <lightning-input value={userName} label='Change Name' placeholder='Enter new Name' onkeyup={nameInputChange}></lightning-input>
+                        </div>
+                    </template>
+                </div>
+                <div class='buttonGroup subHeaderItem'>
+                    <template if:false={showNameInput}>
+                        <a class="circleButton" href="#" onclick={changeName}>
+                            <span>
+                                <lightning-icon icon-name='utility:edit' size='small' style="margin-top: 20%"></lightning-icon>
+                            </span>
+                        </a>
+                        <a class="circleButton" href="#" onclick={logOut}>
+                            <span>
+                                <lightning-icon icon-name='utility:logout' size='small' style="margin-top: 20%"></lightning-icon>
+                            </span>
+                        </a>
+                    </template>
+                    <template if:true={showNameInput}>
+                        <a class="circleButton" href="#" onclick={closeChange}>
+                            <span>
+                                <lightning-icon icon-name='utility:close' size='small' style="margin-top: 20%"></lightning-icon>
+                            </span>
+                        </a>
+                        <a class="circleButton" href="#" onclick={setNewName}>
+                            <span>
+                                <lightning-icon icon-name='utility:change_owner' size='small' style="margin-top: 20%"></lightning-icon>
+                            </span>
+                        </a>
+                    </template>
+                </div>
+            </div>
+            <div class="slds-tabs_default ">
+                <ul class="slds-tabs_default__nav" role="tablist">
+                    <li class="slds-tabs_default__item tabItem" title='Test' role="presentation" data-type='dashboards' onclick={changeComponent}>
+                        <a class="slds-tabs_default__link"
+                           href="#"
+                           role="tab"
+                           tabindex="0"
+                           aria-selected="false">DASHBOARD
+                        </a>
+                    </li>
+<!--                    <li class="slds-tabs_default__item tabItem" title='Test' role="presentation" data-type='forms' onclick={changeComponent}>-->
+<!--                        <a class="slds-tabs_default__link"-->
+<!--                           href="#"-->
+<!--                           role="tab"-->
+<!--                           tabindex="0"-->
+<!--                           aria-selected="false">FORMS-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li class="slds-tabs_default__item tabItem" title='Test' role="presentation" data-type='services' onclick={changeComponent}>-->
+<!--                        <a class="slds-tabs_default__link"-->
+<!--                           href="#"-->
+<!--                           role="tab"-->
+<!--                           tabindex="0"-->
+<!--                           aria-selected="false">SERVICES-->
+<!--                        </a>-->
+<!--                    </li>-->
+                    <li class="slds-tabs_default__item tabItem" title='Test' role="presentation" data-type='tasks' onclick={changeComponent}>
+                        <a class="slds-tabs_default__link"
+                           href="#"
+                           role="tab"
+                           tabindex="0"
+                           aria-selected="false">TASKS
+                        </a>
+                    </li>
+                    <li class="slds-tabs_default__item tabItem" title='Test' role="presentation" data-type='questions' onclick={changeComponent}>
+                        <a class="slds-tabs_default__link"
+                           href="#"
+                           role="tab"
+                           tabindex="0"
+                           aria-selected="false">Q&A
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <template if:true={views.dashboards}>
+                <c-dashboard ></c-dashboard>
+            </template>
+
+            <template if:true={views.forms}>
+                <c-forms ></c-forms>
+            </template>
+
+            <template if:true={views.services}>
+                <c-services ></c-services>
+            </template>
+
+            <template if:true={views.tasks}>
+                <c-tasks ></c-tasks>
+            </template>
+
+            <template if:true={views.questions}>
+                <c-questions ></c-questions>
+            </template>
+        </div>
+    </div>
+</template>

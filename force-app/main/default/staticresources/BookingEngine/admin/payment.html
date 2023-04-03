@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="description">
+    <meta name="keywords">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="INDEX,FOLLOW">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,600">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/lightbox.css">
+    <link rel="stylesheet" href="../css/datepicker.min.css">
+    <link rel="stylesheet" href="../css/timepicker.min.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <!-- JS-->
+    <!-- jQueryの読み込み-->
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- 上記CDNダウン時のフォールバック-->
+    <script type="text/javascript"><!-- window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')-->
+      
+    </script>
+  </head>
+  <body>
+    <div class="page-dashboard page-admin" id="wrapper">
+      <header class="header">
+        <div class="container clearfix">
+          <button><img src="../images/btn_menu.png" alt=""></button>
+          <div class="header__right"><a class="sign-in" href="#">Logout</a><span>Hello, Guys</span>
+          </div>
+          <!-- end header__right-->
+        </div>
+      </header>
+      <!-- end header-->
+      <!-- end header-->
+      <section id="admin-content">
+        <div class="container">
+          <aside id="sidebar">
+            <ul>
+              <li><a href="./dashborad.html">
+                   <i class="fa fa-file-text-o" aria-hidden="true"></i>Đơn hàng của tôi</a></li>
+              <li><a href="./info.html">
+                   <i class="fa fa-user" aria-hidden="true"></i>Thông tin cá nhân</a></li>
+              <li class="active"><a href="./payment.html">
+                   <i class="fa fa-credit-card" aria-hidden="true"></i>Thông tin thanh toán</a></li>
+              <li><a href="./nof.html">
+                   <i class="fa fa-bell-o" aria-hidden="true"></i>Thông báo của tôi<span class="nofi">9</span></a></li>
+            </ul>
+          </aside>
+          <!-- end sidebar-->
+          <div class="content">
+            <h3>Thông tin tài khoản</h3>
+            <div class="content-bg padding">
+              <form class="form-info" action="#">
+                <div class="wrap">
+                  <div class="items"><span class="label">Payment</span>
+                    <div class="input">
+                      <div class="card">
+                        <p class="input">
+                          <input type="text" name="###"><span class="card_icon"></span>
+                        </p>
+                        <p class="status"><span class="status_icon"></span><span class="status_message"></span></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="items"><span class="label">Cardholder Name</span>
+                    <div class="input">
+                      <input type="text" name="###">
+                    </div>
+                  </div>
+                </div>
+                <div class="wrap">
+                  <div class="items"><span class="label">Security</span>
+                    <div class="input">
+                      <input type="text" name="###">
+                    </div>
+                  </div>
+                  <div class="items"><span class="label">Expiration Date</span>
+                    <div class="input">
+                      <select name="">
+                        <option value="1">1</option>
+                      </select>
+                      <select name="">
+                        <option value="2018">2018</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="items">
+                  <button type="submit">Update</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- end admin-content-->
+      <!-- end main--><div class="md-modal md-effect-1" id="modal-login">
+<div class="md-content login">
+<div>
+<button class="md-close"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
+      <div id="form">
+        <form action="" method="post">
+          <div class="logo">Logo</div>
+          <div class="form-item">
+            <p class="formLabel">Username</p>
+            <input class="form-style" id="username" type="text" name="username">
+          </div>
+          <div class="form-item">
+            <p class="formLabel">Password</p>
+            <input class="form-style" id="password" type="password" name="password">
+          </div>
+          <div class="form-item">
+            <input class="login" type="submit" value="Log In">
+          </div>
+          <div class="form-item">
+            <p><a href="#"><small>Forgot Password ?</small></a></p>
+          </div>
+          <div class="form-item bottom"><span>Not a customer?</span><a href="./signup.html"><small>Register</small></a></div>
+        </form>
+      </div></div>
+</div>
+</div>
+<div class="md-overlay"></div>
+      <footer class="footer" id="footer">
+        <div class="container">
+          <ul class="fnav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+          <div class="social">
+            <h3>Follow us</h3>
+            <ul>
+              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+          <div class="join">
+            <h3>Join now</h3>
+            <form class="form" action="#" method="post">
+              <input type="email" name="###">
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+        <div class="copy">
+          <p>Copyright 2017 · All rights reserved.</p>
+        </div>
+      </footer>
+      <!-- end footer-->
+    </div>
+    <script type="text/javascript" src="../js/jquery.cardcheck.js"></script>
+    <script>
+      // If JavaScript is enabled, hide fallback select field
+      $('.no-js').removeClass('no-js').addClass('js');
+      
+      // When the user focuses on the credit card input field, hide the status
+      $('.card input').bind('focus', function() {
+      		$('.card .status').hide();
+      });
+      
+      // When the user tabs or clicks away from the credit card input field, show the status
+      $('.card input').bind('blur', function() {
+      		$('.card .status').show();
+      });
+      
+      // Run jQuery.cardcheck on the input
+      $('.card input').cardcheck({
+      		callback: function(result) {
+      				
+      				var status = (result.validLen && result.validLuhn) ? 'valid' : 'invalid',
+      						message = '',
+      						types = '';
+      				
+      				// Get the names of all accepted card types to use in the status message.
+      				for (i in result.opts.types) {
+      						types += result.opts.types[i].name + ", ";
+      				}
+      				types = types.substring(0, types.length-2);
+      				
+      				// Set status message
+      				if (result.len < 1) {
+      						message = 'Please provide a credit card number.';
+      				} else if (!result.cardClass) {
+      						message = 'We accept the following types of cards: ' + types + '.';
+      				} else if (!result.validLen) {
+      						message = 'Please check that this number matches your ' + result.cardName + ' (it appears to be the wrong number of digits.)';
+      				} else if (!result.validLuhn) {
+      						message = 'Please check that this number matches your ' + result.cardName + ' (did you mistype a digit?)';
+      				} else {
+      						message = 'Great, looks like a valid ' + result.cardName + '.';
+      				}
+      				
+      				// Show credit card icon
+      				$('.card .card_icon').removeClass().addClass('card_icon ' + result.cardClass);
+      				
+      				// Show status message
+      				$('.card .status').removeClass('invalid valid').addClass(status).children('.status_message').text(message);
+      		}
+      });
+    </script>
+    <script type="text/javascript" src="../js/modernizr.js"></script>
+    <script type="text/javascript" src="../js/lightbox.js"></script>
+    <script type="text/javascript" src="../js/datepicker.min.js"></script>
+    <script type="text/javascript" src="../js/timepicker.min.js"></script>
+    <script type="text/javascript" src="../js/vendor.min.js"></script>
+    <script type="text/javascript" src="../js/admin_common.js"></script>
+  </body>
+</html>

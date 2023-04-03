@@ -1,0 +1,102 @@
+<apex:page docType="html-5.0" showHeader="false" sidebar="false" standardStylesheets="false" applyBodyTag="false" applyHtmlTag="false" controller="Ex_Template_Controller" action="{!checkUserSession}">
+
+    <html>
+        <head>
+            <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+            <meta content="initial-scale=1" name="viewport" />
+            <title>Excalibur</title>
+            <link href="" rel="icon" type="image/x-icon" />
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+            <link href="https://dwu9sd79a6vgg.cloudfront.net/css/fontawesome.css" rel="stylesheet" />
+            <link href="https://dwu9sd79a6vgg.cloudfront.net/css/slick.css" rel="stylesheet" />
+            <link href="https://dwu9sd79a6vgg.cloudfront.net/css/bootstrap-grid.css" rel="stylesheet" />
+            <link href="https://dwu9sd79a6vgg.cloudfront.net/css/styles.css" media="screen" rel="stylesheet" />
+            <script src="https://d1b89zc79exfxt.cloudfront.net/js/jquery.js"></script>
+        </head>
+        <!-- <img src="https://dwu9sd79a6vgg.cloudfront.net/img/logo.png" alt=""/> -->
+        <body id="body" class="no-bg">
+            <header class="header">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-4 col-7">
+                            <a class="logo" href="/"><img alt="Excalibur Logo" src="https://dwu9sd79a6vgg.cloudfront.net/img/logo.png" /></a>
+                        </div>
+                        <div class="col-md-8 col-5">
+                            <button class="navigation__button"><i class="fas fa-bars"></i></button>
+                            <nav class="navigation">
+                                <ul>
+                                    <li><a href="/blog">BLOG</a></li>
+                                    <li class="login-btn"><a class="button" href="#" onclick="redirectToPortal()">Login</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="main">
+            
+                <apex:insert name="ex_content"/>
+
+            </div>
+            
+            <!-- login modal -->
+            <div class="modal login-modal" id="login-modal">
+                <div class="wrapper-border">
+                    <div class="login-modal-content">
+                        <h3 class="title title__line-center">login</h3>
+                        <p class="subtiltle">Login to our site</p>
+                        <div class="login-modal__form">
+                            <form action="">
+                                <input type="text" name="login" id="login" placeholder="Username or login"/>
+                                <input type="password" name="password" id="password" placeholder="Password"/>
+                                <div class="login-modal__form-checkbox">
+                                    <input type="checkbox" name="remember" id="remember" value=""/>
+                                    <label for="remember">Remember me</label>
+                                </div>
+                                <div class="login-modal__form-button">
+                                    <button type="submit" class="button">Login</button>
+                                </div>
+                                <div class="login-modal__form-recovery">
+                                    <a href="#">Forgot your password</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- login modal end -->
+            
+            <footer class="footer">
+                <div class="container">
+                    <!-- <a class="totop" href="#bnr"><i class="fa fa-chevron-up"></i></a> -->
+                    <div class="footer-wrapper footer__top-line">
+                        <div class="row justify-content-between">
+                            <div class="col-md-6">
+                                <p class="copyright">All rights reserved 2020</p>
+                            </div>
+                            <div class="col-md-6">
+                                <nav class="footer-nav">
+                                    <ul>
+                                        <li><a href="#">Terms of Use</a></li>
+                                        <li><a href="#">Privacy Policy</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer> 
+            <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+            <script src="https://dwu9sd79a6vgg.cloudfront.net/js/slick.js"></script>
+            <script src="https://dwu9sd79a6vgg.cloudfront.net/js/common.js"></script>
+            <script>
+                function redirectToPortal() {
+                    console.log('redirect');
+                    window.location.href = 'https://excaliburportal.force.com';
+                }
+            </script>
+        </body>   
+    </html>
+
+</apex:page>

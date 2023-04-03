@@ -1,0 +1,147 @@
+<apex:page docType="html-5.0" showHeader="false" sidebar="false" standardStylesheets="false" applyBodyTag="false" applyHtmlTag="false">
+
+     <!-- Template -->
+    <apex:composition template="Ex_Template">
+        <!-- Define content -->
+        <apex:define name="ex_content">
+        
+            <div class="blog-page">
+                <div class="blog-page__title">
+                    <div class="container">
+                        <h1>Blog</h1>
+                    </div>
+                </div>
+                <div class="blog-page-large">
+                    <div class="container">
+                        <div class="blog-page__item">
+                            <a href="#">
+                                <img src="https://dwu9sd79a6vgg.cloudfront.net/img/blog-thumb-1.jpg" alt="" class="blog-thumb"/>
+                                <article>
+                                    <span class="category">PRODUCTIVITY, TODOIST</span>
+                                    <h3>How to Centralize Your Tasks When You’re Using Too Many Apps</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
+                                </article>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-page-medium">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="blog-page__item">
+                                    <a href="#">
+                                        <img src="https://dwu9sd79a6vgg.cloudfront.net/img/blog-thumb-2.jpg" alt="" class="blog-thumb"/>
+                                        <article>
+                                            <span class="category">PRODUCTIVITY, TODOIST</span>
+                                            <h3>How to Centralize Your Tasks When You’re Using Too Many Apps</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
+                                        </article>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="blog-page__item">
+                                    <a href="#">
+                                        <img src="https://dwu9sd79a6vgg.cloudfront.net/img/blog-thumb-3.jpg" alt="" class="blog-thumb"/>
+                                        <article>
+                                            <span class="category">PRODUCTIVITY, TODOIST</span>
+                                            <h3>How to Centralize Your Tasks When You’re Using Too Many Apps</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
+                                        </article>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>              
+                    </div>
+                </div>
+                <div class="blog-page-small">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="blog-page__item">
+                                    <a href="#">
+                                        <img src="https://dwu9sd79a6vgg.cloudfront.net/img/blog-thumb-4.jpg" alt="" class="blog-thumb"/>
+                                        <article>
+                                            <span class="category">PRODUCTIVITY, TODOIST</span>
+                                            <h3>How to Centralize Your Tasks When You’re Using Too Many Apps</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
+                                        </article>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="blog-page__item">
+                                    <a href="#">
+                                        <img src="https://dwu9sd79a6vgg.cloudfront.net/img/blog-thumb-5.jpg" alt="" class="blog-thumb"/>
+                                        <article>
+                                            <span class="category">PRODUCTIVITY, TODOIST</span>
+                                            <h3>How to Centralize Your Tasks When You’re Using Too Many Apps</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
+                                        </article>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="blog-page__item">
+                                    <a href="#">
+                                        <img src="https://dwu9sd79a6vgg.cloudfront.net/img/blog-thumb-6.jpg" alt="" class="blog-thumb"/>
+                                        <article>
+                                            <span class="category">PRODUCTIVITY, TODOIST</span>
+                                            <h3>How to Centralize Your Tasks When You’re Using Too Many Apps</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
+                                        </article>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="blog-page__item">
+                                    <a href="#">
+                                        <img src="https://dwu9sd79a6vgg.cloudfront.net/img/blog-thumb-4.jpg" alt="" class="blog-thumb"/>
+                                        <article>
+                                            <span class="category">PRODUCTIVITY, TODOIST</span>
+                                            <h3>How to Centralize Your Tasks When You’re Using Too Many Apps</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
+                                        </article>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="blog-page__item">
+                                    <a href="#">
+                                        <img src="https://dwu9sd79a6vgg.cloudfront.net/img/blog-thumb-5.jpg" alt="" class="blog-thumb"/>
+                                        <article>
+                                            <span class="category">PRODUCTIVITY, TODOIST</span>
+                                            <h3>How to Centralize Your Tasks When You’re Using Too Many Apps</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
+                                        </article>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="blog-page__item">
+                                    <a href="#">
+                                        <img src="https://dwu9sd79a6vgg.cloudfront.net/img/blog-thumb-6.jpg" alt="" class="blog-thumb"/>
+                                        <article>
+                                            <span class="category">PRODUCTIVITY, TODOIST</span>
+                                            <h3>How to Centralize Your Tasks When You’re Using Too Many Apps</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud </p>
+                                        </article>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <a href="#" class="button-empty">Load more</a>
+                    </div>
+                </div>
+            </div>
+        
+        </apex:define>
+    </apex:composition>
+
+
+</apex:page>

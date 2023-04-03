@@ -1,0 +1,111 @@
+/**
+ * Created by Artsiom.Klimanski on 12/13/2019.
+ */
+.cover {
+    width: 100%;
+    height: 83%;
+}
+
+.emptyText {
+    height: auto;
+    text-align: center;
+    font-size: x-large;
+    margin-top: 50px;
+}
+
+.cardsHolder {
+    padding: 15px;
+}
+
+.slds-card__header {
+    border-bottom: 1px solid darkgrey;
+}
+
+.schedule {
+    margin-left: 10px;
+    width: 20%;
+    text-align: center;
+}
+
+.slds-card__body {
+    padding: 15px;
+}
+
+.progressBar {
+    margin-bottom: 25px;
+}
+
+.cardHeader {
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.questions {
+    width: 80%;
+}
+
+.slds-button {
+    border-radius: .99rem;
+}
+
+.slds-button_brand {
+    background-color: coral;
+    border-color: coral;
+}
+
+.card {
+    margin-bottom: 15px;
+}
+
+.taskItem {
+    margin-bottom: 5px;
+}
+
+.taskItem:hover {
+    border-radius: 5px;
+    border: 2px solid deepskyblue;
+    cursor: pointer;
+}
+
+.activeTask {
+    border-radius: 5px;
+    border: 2px solid deepskyblue;
+}
+
+.new-button {
+    display: inline-block;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #9c27b0;
+    font-size: 16px;
+    color: #fff;
+}
+
+.button_group {
+    width: 100%;
+}
+
+.photo_button {
+    width: 50%;
+    background-color: #9c27b0;
+    color: white;
+}
+
+input[type="file"] {
+    position: absolute;
+    z-index: -1;
+    top: 6px;
+    left: 0;
+    font-size: 15px;
+    color: rgb(153,153,153);
+}
+.button-wrap {
+    position: relative;
+}
+
+.large_text
+{
+    font-size: large;
+}

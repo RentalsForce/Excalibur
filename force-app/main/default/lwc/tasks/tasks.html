@@ -1,0 +1,121 @@
+<!--
+ - Created by Artsiom.Klimanski on 12/13/2019.
+ -->
+
+<!-- Tasks -->
+<template>
+    <div class='cover'>
+        <template if:false={haveTasks}>
+            <div class='emptyText'>
+                <p>You haven't assigned tasks</p>
+            </div>
+        </template>
+        <div class='cardsHolder'>
+            <template for:each={tasksCards} for:item='task'>
+                <div key={task.targetId} class="card">
+                    <article class="slds-card">
+                        <div class="slds-card__header slds-grid">
+                            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                <div class="slds-media__body">
+                                    <h2 class="slds-card__header-title cardHeader">
+                                        <a href="javascript:void(0);" class="slds-card__header-link slds-truncate" title="Accounts">
+                                            <span>{task.name}</span>
+                                        </a>
+                                    </h2>
+                                </div>
+                            </header>
+                        </div>
+                        <div class="slds-card__body">
+                            <div class='progressBar'>
+                                <lightning-progress-bar value={task.percent} size="large" variant="circular"></lightning-progress-bar>
+                            </div>
+                            <div class='slds-grid'>
+                                <div class='questions'>
+                                    <div class="tasksHolder" data-taskid={task.targetId} onclick={taskClick}>
+                                        <template for:each={task.tasks} for:item='taskItem'>
+                                            <div key={taskItem.taskId} class='taskItem' data-itemid={taskItem.taskId}>
+                                                <template if:false={taskItem.completed}>
+                                                    <lightning-card  title={taskItem.title} icon-name='standard:task'>
+                                                        <lightning-formatted-rich-text value={taskItem.description}></lightning-formatted-rich-text>
+                                                    </lightning-card>
+                                                </template>
+                                                <template if:true={taskItem.completed}>
+                                                    <lightning-card  title={taskItem.title} icon-name='standard:task2'>
+                                                        <lightning-formatted-rich-text value={taskItem.description}></lightning-formatted-rich-text>
+                                                    </lightning-card>
+                                                </template>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+                                <template if:true={task.showAction}>
+                                    <div class="schedule">
+                                        <template if:true={task.showPhoto}>
+                                            <template if:false={task.haveCurrentPhoto}>
+                                                <div class='button-wrap slds-show'>
+                                                    <label class='new-button' for={task.targetId}> Upload Photo</label>
+                                                    <input id={task.targetId} type='file'
+                                                           data-targetid={task.targetId}
+                                                           accept="image/*"
+                                                           onchange={handleFiles}/>
+                                                </div>
+                                            </template>
+                                            <template if:true={task.haveCurrentPhoto}>
+                                                <template if:false={task.currentCompleted}>
+                                                    <div class="slds-button-group button_group" role="group">
+                                                        <button class="slds-button slds-button_neutral photo_button" data-targetid={task.targetId} onclick={tryToSend}>Send</button>
+                                                        <button class="slds-button slds-button_neutral photo_button" data-targetid={task.targetId} onclick={removePhotoFromTarget}>Remove</button>
+                                                    </div>
+                                                </template>
+                                            </template>
+                                        </template>
+                                        <template if:false={task.currentCompleted}>
+                                            <div style='text-align: center'>
+                                                <img class='uploadedPhoto' data-targetid={task.targetId}/>
+                                            </div>
+                                        </template>
+                                        <template if:true={task.currentCompleted}>
+                                            <div style='text-align: center'>
+                                                <img class='uploadedPhoto' src={task.currentPhotoBlob} data-targetid={task.targetId}/>
+                                            </div>
+                                        </template>
+                                        <template if:true={task.showSchedule}>
+                                            <template if:true={task.haveTime}>
+                                                <p class='large_text'>The meeting is scheduled on:</p>
+                                                <div class='slds-grid large_text' style='margin-bottom: 25px'>
+                                                    <div class='slds-col' style='text-align: right; margin-right: 15px'>
+                                                        <p>Date:</p>
+                                                        <p>From:</p>
+                                                        <p>To:</p>
+                                                    </div>
+                                                    <div class='slds-col' style='text-align: left'>
+                                                        <p>{task.meetingDate}</p>
+                                                        <p>{task.meetingTimeFrom}</p>
+                                                        <p>{task.meetingTimeTo}</p>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                            <template if:false={task.haveTime}>
+                                                <template if:false={task.redirected}>
+                                                    <button class="slds-button slds-button_neutral photo_button"
+                                                            data-targetid={task.targetId}
+                                                            data-taskid={task.activeTaskId}
+                                                            onclick={redirectToSchedule}>Schedule meeting
+                                                    </button>
+                                                </template>
+                                                <template if:true={task.redirected}>
+                                                    <p>Waiting response</p>
+                                                </template>
+                                            </template>
+                                        </template>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </template>
+        </div>
+
+    </div>
+</template>

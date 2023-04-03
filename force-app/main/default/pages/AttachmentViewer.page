@@ -1,0 +1,43 @@
+<!--
+ - Created by Razer on 17.04.2020.
+ -->
+
+<apex:page id="AttachmentViewer" showHeader="false" applyBodyTag="false" applyHtmlTag="false" standardStylesheets="false" controller="AttachmentViewerController" docType="html-5.0">
+
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+
+        Visualforce.remoting.Manager.invokeAction(
+            '{!$RemoteAction.AttachmentViewerController.getAttachment}',
+            urlParams.get('version'),
+            function(result, event){
+                if (event.status) {
+                    console.log(result);
+                    fetch(result.base64Attachment)
+                        .then(res => res.blob())
+                        .then(blob => {
+                            const file = new File([blob], result.title,{ type: result.mime });
+                            console.log(file);
+                            const data = window.URL.createObjectURL(blob);
+                            window.open(data, '_self');
+                            // let link = document.createElement('a');
+                            // link.href = data;
+                            // link.download= result.title;
+                            // link.click();
+                            // setTimeout(function(){
+                            //     // For Firefox it is necessary to delay revoking the ObjectURL
+                            //     window.URL.revokeObjectURL(data);
+                            // }, 100);
+                        })
+                } else if (event.type === 'exception') {
+                    document.getElementById("responseErrors").innerHTML =
+                        event.message + "<br/>\n<pre>" + event.where + "</pre>";
+                } else {
+                    document.getElementById("responseErrors").innerHTML = event.message;
+                }
+            },
+            {escape: false}
+        );
+    </script>
+</apex:page>

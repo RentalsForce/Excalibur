@@ -1,0 +1,263 @@
+/**
+ * Created by Razer on 14.02.2020.
+ */
+.lib_item
+{
+    padding: 10px;
+    text-transform: full-width;
+}
+
+.lib_item:hover
+{
+    background-color: #4B89EE;
+    cursor: pointer;
+}
+
+.lib_item_current
+{
+    background-color: #4B89EE;
+}
+
+.question_item
+{
+    padding: 10px;
+}
+
+.targets
+{
+    margin-top: 10px;
+}
+
+.target_item
+{
+    text-align: center;
+}
+
+.target_item:hover
+{
+    background-color: #4B89EE;
+    cursor: pointer;
+}
+
+.question_item:hover
+{
+    background-color: cadetblue;
+    cursor: pointer;
+}
+
+.tasks_section
+{
+    margin-top: 15px;
+}
+
+.element_center
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left_section
+{
+    max-width: 25%;
+}
+
+.middle_section
+{
+    max-width: 50%;
+    margin-right: 15px;
+    border-radius: 4px;
+    background-color: azure;
+    height: fit-content;
+}
+
+.right_section
+{
+    max-width: 25%;
+}
+
+.left_section
+{
+    background-color: white;
+    padding: 15px;
+    margin-right: 15px;
+    border-radius: 4px;
+    height: fit-content;
+}
+
+.new_target
+{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.question_left
+{
+    max-width: 10%;
+    text-align: center;
+}
+
+.question_middle
+{
+    max-width: 75%;
+    text-align: center;
+}
+
+.question_right
+{
+    max-width: 15%;
+    text-align: center;
+}
+
+.questions_header
+{
+    background-color: #F79621;
+    border-radius: 4px;
+}
+
+.targets_header
+{
+    text-align: center;
+    border-radius: 4px;
+    background-color: #F79621;
+    margin-top: 10px;
+}
+
+.rec_checkboxes
+{
+    margin-bottom: 15px;
+}
+
+.remove_image_button
+{
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.remove_image_button:hover
+{
+    background-color: indianred;
+    color: white;
+}
+
+.add_image_button
+{
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.add_image_button:hover
+{
+    background-color: lightgreen;
+    color: white;
+}
+
+.note_block
+{
+    margin-bottom: 10px;
+}
+
+.circleButton {
+    text-align: center;
+    margin-right: 5px;
+    background-color: white;
+    border: grey 2px solid;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.up_down_button_green:hover
+{
+    background: forestgreen;
+}
+
+.up_down_button_red:hover
+{
+    background: firebrick;
+}
+
+.help_note
+{
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-top: 15px;
+    padding-left: 5px;
+}
+
+.help_list
+{
+    list-style-type:disc;
+    padding-left: 15px;
+}
+
+.modal_target_item
+{
+    padding: 15px;
+}
+
+.item_active
+{
+    background-color: #5C9AFF;
+}
+
+.modal_target_item:hover
+{
+    background-color: #5C9AFF;
+    cursor: pointer;
+}
+
+.remove_target:hover
+{
+    background-color: firebrick;
+}
+
+.meeting_task
+{
+    background-color: #9c27b0;
+    padding: 8px;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.photo_task
+{
+    background-color: lightgreen;
+    padding: 8px;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.meeting_button
+{
+    background-color: #9c27b0;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.photo_button
+{
+    background-color: lightgreen;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.hover_opacity:hover
+{
+    opacity: 0.8;
+}
+
+.note_image
+{
+    max-width: 20%;
+    padding: 10px;
+}

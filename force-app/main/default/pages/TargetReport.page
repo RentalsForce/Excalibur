@@ -1,0 +1,278 @@
+<!--
+ - Created by Razer on 06.04.2020.
+ -->
+
+<apex:page id="TargetReport" showHeader="false" applyBodyTag="false" renderAs="advanced_pdf" applyHtmlTag="false" standardStylesheets="false" controller="TargetReportController" docType="html-5.0">
+
+    <head>
+
+        <style type="text/css">
+            @page{
+                size: A4 landscape;
+            }
+            .cover {
+                width: 100%;
+                height: 83%;
+                background: #EFF2F7;
+                overflow: hidden;
+            }
+
+            .issue {
+                display: flex;
+                width: 100%;
+            }
+
+            .dashboard {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
+            .priority_cell
+            {
+                height: 100%;
+                text-align: center;
+                font-size: -webkit-xxx-large;
+            }
+
+            .priority_column
+            {
+                width: 10%;
+                padding: 5px;
+                border-right: 1px solid darkgrey;
+                border-bottom: 1px solid darkgrey;
+            }
+
+            .issue_column
+            {
+                width: 30%;
+                padding: 5px;
+                border-bottom: 1px solid darkgrey;
+            }
+
+            .inspector_note_column
+            {
+                width: 20%;
+                border-left: 1px solid darkgrey;
+                border-right: 1px solid darkgrey;
+                text-align: center;
+                padding: 5px;
+                border-bottom: 1px solid darkgrey;
+            }
+
+            .recommendation_column
+            {
+                width: 30%;
+                border-right: 1px solid darkgrey;
+                text-align: center;
+                padding: 5px;
+                border-bottom: 1px solid darkgrey;
+            }
+
+            .cost_column
+            {
+                width: 10%;
+                padding: 5px;
+                border-bottom: 1px solid darkgrey;
+            }
+
+            .slds-tabs_default {
+                /*padding: 10px;*/
+            }
+
+            .issuesContainer>div.issue {
+                border: 1px solid darkgrey;
+            }
+
+            .cell {
+                padding: 5px;
+                width: 100%;
+            }
+
+            .slds-tabs_default {
+                height: 100%;
+            }
+
+            .emptyText {
+                height: auto;
+                text-align: center;
+                font-size: x-large;
+                margin-top: 50px;
+            }
+
+            .issue_table {
+                max-height: 90vh;
+                overflow-y: auto;
+                width: 100%;
+                scrollbar-width: 0px;
+            }
+
+            .slds-grid
+            {
+                display: inline;
+            }
+
+            .slds-col
+            {
+                flex: 1 1 auto;
+            }
+
+            ::-webkit-scrollbar {
+                width: 0px;  /* Remove scrollbar space */
+                background: transparent;  /* Optional: just make scrollbar invisible */
+            }
+
+            .inspector_note {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
+            .issue_photo {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
+            table.results, th.results, td.results {
+                border: 1px solid black;
+                page-break-inside:avoid;
+            }
+
+            table.results {
+                text-align: left;
+                border-collapse: collapse;
+            }
+        </style>
+    </head>
+    <div id='{!currentResult.libName}'
+         class="slds-tabs_default__content tabContent slds-show"
+         data-tab='{!currentResult.resultId}'
+         role="tabpanel"
+         aria-labelledby='{!currentResult.resultId}'>
+        <div class='issuesContainer'>
+            <div>
+                <p>Assessment Points: {!currentResult.averagePoints}/{!currentResult.maxPoints}</p>
+            </div>
+            <apex:panelGrid columns="2" width="100%">
+                <apex:outputPanel >
+                    <div>
+                        <!--                    <apex:image value="{!URLFOR($Resource.diagram_green)}"/>-->
+                        <apex:outputPanel rendered="{!currentResult.imageName == 'green'}">
+                            <img src="{!URLFOR($Resource.diagram_green)}" width="100%" height="100%"/>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!currentResult.imageName == 'blue'}">
+                            <img src="{!URLFOR($Resource.diagram_blue)}" width="100%" height="100%"/>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!currentResult.imageName == 'orange'}">
+                            <img src="{!URLFOR($Resource.diagram_orange)}" width="100%" height="100%"/>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!currentResult.imageName == 'red'}">
+                            <img src="{!URLFOR($Resource.diagram_red)}" width="100%" height="100%"/>
+                        </apex:outputPanel>
+                        <apex:outputPanel rendered="{!currentResult.imageName == 'yellow'}">
+                            <img src="{!URLFOR($Resource.diagram_yellow)}" width="100%" height="100%"/>
+                        </apex:outputPanel>
+                    </div>
+                </apex:outputPanel>
+                <apex:outputPanel >
+                    <div style='width: 100%; color: #093A3F;'>
+                        <p><b>Critical Priority (Red)</b> - Litigation or government penalty is imminent</p>
+                        <p><b>High Priority (Orange)</b> - Litigation or government penalty is highly likely</p>
+                        <p><b>Substantial Priority (Yellow)</b> - Moderate possibility of litigation or government </p>
+                        <p><b>Moderate Priority (Blue)</b> - Low possibility of litigation or government penalty</p>
+                        <p><b>Low Priority (Green)</b> - Resolution is recommended but not legally required</p>
+                        <p></p>
+                    </div>
+                </apex:outputPanel>
+            </apex:panelGrid>
+            <table class="results">
+                <thead>
+                    <tr>
+                        <th class="results">PRIORITY LEVEL</th>
+                        <th class="results">OBSERVED ISSUE</th>
+                        <th class="results">NOTE</th>
+                        <th class="results">RECOMMENDATION</th>
+                        <th class="results">ESTIMATED COST</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <apex:repeat value="{!currentResult.issues}" var="issue">
+                    <tr>
+                        <td class="results" style="{!issue.cellStyle}">
+                            <p class='priority_cell' style="{!issue.cellStyle}">{!issue.threatPoints}</p>
+                        </td>
+                        <td class="results">
+                            <apex:outputText value="{!issue.issue}" escape="false"/>
+
+                            <apex:outputPanel rendered="{!issue.haveIssueImage}">
+                                <a href='{!issue.issueAttachment.link}' target='_blank'>{!issue.issueAttachment.title}</a>
+                            </apex:outputPanel>
+                        </td>
+                        <td class="results">
+                            <apex:outputText value="{!issue.inspectorNote}" escape="false"/>
+
+                            <apex:outputPanel rendered="{!issue.haveNoteImage}">
+                                <a href='{!issue.noteAttachment.link}' target='_blank'>{!issue.noteAttachment.title}</a>
+                            </apex:outputPanel>
+                        </td>
+                        <td class="results">
+                            <apex:outputText value="{!issue.recommendation}" escape="false"/>
+
+                            <apex:outputPanel rendered="{!issue.haveRecImage}">
+                                <a href='{!issue.recAttachment.link}' target='_blank'>{!issue.recAttachment.title}</a>
+                            </apex:outputPanel>
+                        </td>
+                        <td class="results">
+                            <apex:outputPanel rendered="{!issue.havePrices}">
+                                <apex:repeat value="{!issue.prices}" var="price">
+                                    <apex:outputText value="{!price.priceText}" escape="false"/>
+<!--                                    <p>"{!price.priceText}"</p>-->
+                                </apex:repeat>
+                            </apex:outputPanel>
+                        </td>
+                    </tr>
+                </apex:repeat>
+                </tbody>
+            </table>
+
+<!--            <div class='issue_table'>-->
+<!--                <apex:repeat value="{!currentResult.issues}" var="issue">-->
+<!--                    <div class='issue'>-->
+<!--                        <div class='priority_column'>-->
+<!--                            <p class='priority_cell' style="{!issue.cellStyle}">{!issue.threatPoints}</p>-->
+<!--                        </div>-->
+<!--                        <div class='issue_column'>-->
+<!--                            <apex:outputText value="{!issue.issue}" escape="false"/>-->
+<!--                            <apex:outputPanel rendered="{!issue.haveIssueImage}">-->
+<!--                                <div>-->
+<!--                                    <img src="{!issue.issueImage}"/>-->
+<!--                                </div>-->
+<!--                            </apex:outputPanel>-->
+<!--                        </div>-->
+<!--                        <div class='inspector_note_column'>-->
+<!--                            <apex:outputText value="{!issue.inspectorNote}" escape="false"/>-->
+<!--                            <apex:outputPanel rendered="{!issue.haveNoteImage}">-->
+<!--                                <div>-->
+<!--                                    <img src="{!issue.noteImage}"/>-->
+<!--                                </div>-->
+<!--                            </apex:outputPanel>-->
+<!--                        </div>-->
+<!--                        <div class='recommendation_column'>-->
+<!--                            <apex:outputText value="{!issue.recommendation}" escape="false"/>-->
+<!--                            <apex:outputPanel rendered="{!issue.haveRecImage}">-->
+<!--                                <div>-->
+<!--                                    <img src="{!issue.recImage}"/>-->
+<!--                                </div>-->
+<!--                            </apex:outputPanel>-->
+<!--                        </div>-->
+<!--                        <div class='cost_column'>-->
+<!--                            <apex:outputPanel rendered="{!issue.havePrices}">-->
+<!--                                <apex:repeat value="{!issue.prices}" var="price">-->
+<!--                                    <p>"{!price.userMessage}"</p>-->
+<!--                                </apex:repeat>-->
+<!--                            </apex:outputPanel>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </apex:repeat>-->
+<!--            </div>-->
+        </div>
+    </div>
+</apex:page>

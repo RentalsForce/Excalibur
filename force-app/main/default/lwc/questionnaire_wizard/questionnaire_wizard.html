@@ -1,0 +1,1013 @@
+<!--
+ - Created by Razer on 14.02.2020.
+ -->
+
+<!-- Questionnaire Wizard -->
+<template>
+    <div class='content'>
+        <template if:true={showSpinner}>
+            <div>
+                <lightning-spinner size='large' alternative-text='Loading...'>
+
+                </lightning-spinner>
+            </div>
+        </template>
+        <div class=slds-grid>
+            <div class='slds-col left_section'>
+                <template if:false= {newLibMode}>
+
+                </template>
+                <template if:true={newLibMode}>
+                    <div>
+                        <div class='lib_name'>
+                            <lightning-input type="text"
+                                             label="Questionnaire Title"
+                                             value={newLibObject.libName}
+                                             onchange={setNewLibName}>
+                            </lightning-input>
+                        </div>
+                        <div class='targets_header'>
+                            <p>Assigned To Targets:</p>
+                        </div>
+                        <div class='targets'>
+                            <template for:each={newLibObject.targets} for:item='target'>
+                                <div key={target.targetId} class='slds-grid target_item'>
+                                    <div class='slds-col' style='max-width: 90%'>
+                                        <div class='target_item'>
+                                            <p>{target.targetName}</p>
+                                        </div>
+                                    </div>
+                                    <div class='slds-col remove_target'
+                                         data-targetid={target.targetId}
+                                         data-targetname={target.targetName}
+                                         onclick={deleteTarget}
+                                         style='max-width: 10%'>
+                                        <div>
+                                            <lightning-icon icon-name='utility:close' size='xx-small'></lightning-icon>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                        <template if:true={haveLibName}>
+                            <div class='new_target'>
+                                <lightning-button-group>
+                                    <lightning-button variant="brand"
+                                                      label="New Target"
+                                                      onclick={newTarget}
+                                                      disabled={newLibObject.newTargetDisabled}>
+                                    </lightning-button>
+                                    <lightning-button variant="brand-outline"
+                                                      label="New Question"
+                                                      disabled={newLibObject.newQuestionDisabled}
+                                                      onclick={newQuestion}>
+                                    </lightning-button>
+                                    <template if:true={newLibObject.haveChanges}>
+                                        <lightning-button variant="success"
+                                                          onclick={saveQuestionnaire}
+                                                          label="Save">
+                                        </lightning-button>
+                                    </template>
+                                    <lightning-button variant="destructive"
+                                                      onclick={deleteLib}
+                                                      label="Delete">
+                                    </lightning-button>
+                                </lightning-button-group>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+                <template if:true={newLibObject}>
+                    <div class="tasks_section">
+                        <article class="slds-card">
+                            <div class="slds-card__header slds-grid">
+                                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                    <div class="slds-media__figure">
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <h2 class="slds-card__header-title">
+                                            <a href="#" class="slds-card__header-link slds-truncate" title="Tasks">
+                                                <span>Tasks</span>
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    <div class="slds-no-flex">
+                                        <lightning-button-group>
+                                            <button class='slds-button meeting_button hover_opacity'
+                                                    data-type="Schedule a Meeting"
+                                                    disabled={newQuestionDisabled}
+                                                    onclick={openTaskModal}>Meeting
+                                            </button>
+                                            <button class='slds-button photo_button hover_opacity'
+                                                    data-type="Upload Attachment"
+                                                    disabled={newQuestionDisabled}
+                                                    onclick={openTaskModal}>Attachment
+                                            </button>
+                                        </lightning-button-group>
+                                    </div>
+                                </header>
+                            </div>
+                            <div class="slds-card__body slds-card__body_inner">
+                                <template if:false={newLibObject.tasks}>
+                                    <p>There will be tasks for this Questionnaire</p>
+                                </template>
+                                <template if:true={newLibObject.tasks}>
+                                    <template for:each={newLibObject.tasks} for:item='task'>
+                                        <template if:true={task.meeting}>
+                                            <div key={task.taskId} class="meeting_task hover_opacity" data-id={task.taskId} onclick={openTask}>
+                                                {task.name}
+                                            </div>
+                                        </template>
+                                        <template if:true={task.photo}>
+                                            <div key={task.taskId} class="photo_task hover_opacity" data-id={task.taskId} onclick={openTask}>
+                                                {task.name}
+                                            </div>
+                                        </template>
+                                    </template>
+                                </template>
+                            </div>
+                        </article>
+                    </div>
+                </template>
+
+                <template if:true={newQuestionDisabled}>
+                    <div class='help_note'>
+                        <p>Steps:</p>
+                        <ul class='help_list'>
+                            <li>
+                                Set Name For The New Questionnaire
+                            </li>
+                            <li>
+                                Set Up Default Question
+                            </li>
+                            <li>
+                                Click "Save" In Section Above
+                            </li>
+                            <li>
+                                Add questions one by one
+                            </li>
+                        </ul>
+                    </div>
+                </template>
+            </div>
+
+            <div class='slds-col middle_section'>
+                <template if:true={newLibObject}>
+                    <div class='slds-grid questions_header'>
+                        <div class='slds-col question_left'>
+                            <p>Order</p>
+                        </div>
+                        <div class='slds-col question_middle'>
+                            <p>Question</p>
+                        </div>
+                        <div class='slds-col question_right'>
+                            <p>Actions</p>
+                        </div>
+                    </div>
+                    <template for:each={newLibObject.allQuestions} for:item='question'>
+                        <div key={question.questionOrder}
+                             class='question_item'
+                             data-order={question.questionOrder}
+                             data-questionid={question.questionId}>
+                            <div class='slds-grid'>
+                                <div class='slds-col question_left'
+                                     onclick={openQuestion}>
+                                    <div>
+                                        <span>{question.questionOrder}</span>
+                                    </div>
+                                </div>
+                                <div class='slds-col question_middle'
+                                     onclick={openQuestion}>
+                                    <div>
+                                        <template if:false={question.textEdit}>
+                                            <lightning-formatted-rich-text value={question.questionText}>
+
+                                            </lightning-formatted-rich-text>
+                                        </template>
+
+                                        <template if:true={question.textEdit}>
+                                            <lightning-input-rich-text value={question.questionText}
+                                                                       formats={formats}
+                                                                       data-questionid={question.questionId}
+                                                                       data-order={question.questionOrder}
+                                                                       onchange={changeQuestionText}>
+                                            </lightning-input-rich-text>
+                                        </template>
+                                    </div>
+                                </div>
+                                <div class='slds-col question_right'>
+                                    <div class='slds-grid up_down_block' data-order={question.questionOrder}>
+                                        <div class='slds-col'>
+                                            <a href="#" data-mode="up" class='circleButton up_down_button_green' onclick={changePosition}>
+                                                <span>
+                                                    <lightning-icon icon-name='utility:arrowup'
+                                                                    size='small' ></lightning-icon>
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <div class='slds-col'>
+                                            <a href="#" data-mode="down" class='circleButton up_down_button_red' onclick={changePosition}>
+                                                <span>
+                                                    <lightning-icon icon-name='utility:arrowdown'
+                                                                    size='small'></lightning-icon>
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <div class='slds-col'>
+                                            <a href="#" onclick={editTextQuestion}>
+                                                <span>
+                                                    <lightning-icon icon-name='action:edit'
+                                                                    class='up_down_button_green'
+                                                                    size='xx-small'></lightning-icon>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <template if:true={question.opened}>
+                            <div class='question_info' key={question.questionOrder}>
+                                <article class="slds-card">
+                                    <div class="slds-card__body slds-card__body_inner">
+                                        <div class='slds-grid' style='padding: 10px'>
+                                            <div class='slds-col' style='max-width: 20%'>
+                                                <p>Answer</p>
+                                            </div>
+                                            <div class='slds-col' style='max-width: 40%'>
+                                                <p>Additions</p>
+                                            </div>
+                                            <div class='slds-col' style='max-width: 40%'>
+                                                <p>Skip To</p>
+                                            </div>
+                                        </div>
+                                        <div class="slds-grid" style='padding: 10px'>
+                                            <div class='slds-col' style='max-width: 20%'>
+                                                <p>Yes</p>
+                                            </div>
+                                            <div class='slds-col' style='max-width: 40%'>
+                                                <div class="slds-form-element">
+                                                    <div class="slds-form-element__control">
+                                                        <div class="slds-select_container">
+                                                            <select class="slds-select"
+                                                                    data-mode='yes'
+                                                                    data-questionid={question.questionId}
+                                                                    data-order={question.questionOrder}
+                                                                    onchange={addAddition}>
+                                                                <option value='none'>No Additions</option>
+                                                                <template for:each={question.yesAdditions} for:item='addition'>
+                                                                    <option key={addition} value={addition}>{addition}</option>
+                                                                </template>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class='slds-col' style='max-width: 40%'>
+                                                <div class="slds-form-element">
+                                                    <div class="slds-form-element__control">
+                                                        <div class="slds-combobox_container">
+                                                            <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                                                                <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                                                                    <input type="text"
+                                                                           class="slds-input slds-combobox__input"
+                                                                           value={question.yesSkipToText}
+                                                                           role="textbox"
+                                                                           placeholder="Search..."
+                                                                           data-mode="yes"
+                                                                           data-order={question.questionOrder}
+                                                                           onchange={searchQuestions}
+                                                                           onfocus={setListVisible}/>
+                                                                    <span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
+                                                                        <lightning-icon icon-name='utility:search' size='xx-small'></lightning-icon>
+                                                                  </span>
+                                                                </div>
+                                                                <div id={question.questionOrder} class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid" role="listbox">
+                                                                    <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                                                        <li key={question.questionOrder}
+                                                                            data-orderto={question.questionOrder}
+                                                                            data-orderfrom="none"
+                                                                            data-mode="yes"
+                                                                            role="presentation"
+                                                                            class="slds-listbox__item"
+                                                                            onclick={setSearchInputValue}>
+                                                                            <div id={question.questionOrder} class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                                                                    <span class="slds-media__figure slds-listbox__option-icon">
+                                                                                      <span class="slds-icon_container slds-icon-standard-account">
+                                                                                          <lightning-icon icon-name='standard:account' size='small'></lightning-icon>
+                                                                                      </span>
+                                                                                    </span>
+                                                                                <span class="slds-media__body">
+                                                                                      <span class="slds-listbox__option-text slds-listbox__option-text_entity">None</span>
+                                                                                </span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <template for:each={newLibObject.searchResults} for:item='questionItem'>
+                                                                            <li key={questionItem.questionOrder}
+                                                                                data-orderto={question.questionOrder}
+                                                                                data-orderfrom={questionItem.questionOrder}
+                                                                                data-mode="yes"
+                                                                                role="presentation"
+                                                                                class="slds-listbox__item"
+                                                                                onclick={setSearchInputValue}>
+                                                                                <div id={questionItem.questionOrder} class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                                                                    <span class="slds-media__figure slds-listbox__option-icon">
+                                                                                      <span class="slds-icon_container slds-icon-standard-account">
+                                                                                          <lightning-icon icon-name='standard:account' size='small'></lightning-icon>
+                                                                                      </span>
+                                                                                    </span>
+                                                                                    <span class="slds-media__body">
+                                                                                      <span class="slds-listbox__option-text slds-listbox__option-text_entity">{questionItem.shortName}</span>
+                                                                                      <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">{questionItem.questionOrder}</span>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </li>
+                                                                        </template>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class='slds-grid'>
+                                                <div class='slds-col' style='width: 20%'>
+
+                                                </div>
+                                                <div class='slds-col' style='width: 40%'>
+                                                    <template for:each={question.haveYes} for:item='yes'>
+                                                        <span class="slds-pill" key={yes} role="option" tabindex="0" aria-selected="true">
+                                                            <span class="slds-pill__label" title={yes}>{yes}</span>
+                                                            <span class="slds-icon_container slds-pill__remove"
+                                                                  title="Remove"
+                                                                  data-mode="yes"
+                                                                  data-addition={yes}
+                                                                  data-questionid={question.questionId}
+                                                                  data-order={question.questionOrder}
+                                                                  onclick={removeAddition}>
+                                                                <lightning-icon icon-name='utility:close' size='small'></lightning-icon>
+                                                              <span class="slds-assistive-text">Press delete or backspace to remove</span>
+                                                            </span>
+                                                          </span>
+                                                    </template>
+                                                </div>
+                                                <div class='slds-col' style='width: 40%'>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slds-grid" style='padding: 10px'>
+                                            <div class='slds-col' style='max-width: 20%'>
+                                                <p>No</p>
+                                            </div>
+                                            <div class='slds-col' style='max-width: 40%'>
+                                                <div class="slds-form-element">
+                                                    <div class="slds-form-element__control">
+                                                        <div class="slds-select_container">
+                                                            <select class="slds-select"
+                                                                    data-mode='no'
+                                                                    data-questionid={question.questionId}
+                                                                    data-order={question.questionOrder}
+                                                                    onchange={addAddition}>
+                                                                <option value='none'>No Additions</option>
+                                                                <template for:each={question.noAdditions} for:item='addition'>
+                                                                    <option key={addition} value={addition}>{addition}</option>
+                                                                </template>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class='slds-col' style='max-width: 40%'>
+                                                <div class="slds-form-element">
+                                                    <div class="slds-form-element__control">
+                                                        <div class="slds-combobox_container">
+                                                            <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                                                                <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                                                                     role="none">
+                                                                    <input type="text"
+                                                                           class="slds-input slds-combobox__input"
+                                                                           role="textbox"
+                                                                           placeholder="Search..."
+                                                                           data-mode="no"
+                                                                           data-order={question.questionOrder}
+                                                                           onchange={searchQuestions}
+                                                                           value={question.noSkipToText}
+                                                                           aria-controls={question.questionOrder}
+                                                                           onfocus={setListVisible}/>
+                                                                    <span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
+                                                                        <lightning-icon icon-name='utility:search' size='xx-small'></lightning-icon>
+                                                                  </span>
+                                                                </div>
+                                                                <div id={question.questionOrder} class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid" role="listbox">
+                                                                    <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                                                        <li key={question.questionOrder}
+                                                                            data-orderto={question.questionOrder}
+                                                                            data-orderfrom="none"
+                                                                            data-mode="no"
+                                                                            role="presentation"
+                                                                            class="slds-listbox__item"
+                                                                            onclick={setSearchInputValue}>
+                                                                            <div id={question.questionOrder} class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                                                                    <span class="slds-media__figure slds-listbox__option-icon">
+                                                                                      <span class="slds-icon_container slds-icon-standard-account">
+                                                                                          <lightning-icon icon-name='standard:account' size='small'></lightning-icon>
+                                                                                      </span>
+                                                                                    </span>
+                                                                                <span class="slds-media__body">
+                                                                                      <span class="slds-listbox__option-text slds-listbox__option-text_entity">None</span>
+                                                                                </span>
+                                                                            </div>
+                                                                        </li>
+                                                                        <template for:each={newLibObject.searchResults} for:item='questionItem'>
+                                                                            <li key={questionItem.questionOrder}
+                                                                                data-orderto={question.questionOrder}
+                                                                                data-orderfrom={questionItem.questionOrder}
+                                                                                data-mode="no"
+                                                                                role="presentation"
+                                                                                class="slds-listbox__item"
+                                                                                onclick={setSearchInputValue}>
+                                                                                <div id={questionItem.questionOrder} class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                                                                    <span class="slds-media__figure slds-listbox__option-icon">
+                                                                                      <span class="slds-icon_container slds-icon-standard-account">
+                                                                                          <lightning-icon icon-name='standard:account' size='small'></lightning-icon>
+                                                                                      </span>
+                                                                                    </span>
+                                                                                    <span class="slds-media__body">
+                                                                                      <span class="slds-listbox__option-text slds-listbox__option-text_entity">{questionItem.shortName}</span>
+                                                                                      <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">{questionItem.questionOrder}</span>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </li>
+                                                                        </template>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class='slds-grid'>
+                                                <div class='slds-col' style='width: 20%'>
+
+                                                </div>
+                                                <div class='slds-col' style='width: 40%'>
+                                                    <template for:each={question.haveNo} for:item='no'>
+                                                        <span class="slds-pill" key={no} role="option" tabindex="0" aria-selected="true">
+                                                            <span class="slds-pill__label" title={no}>{no}</span>
+                                                            <span class="slds-icon_container slds-pill__remove"
+                                                                  title="Remove"
+                                                                  data-mode="no"
+                                                                  data-addition={no}
+                                                                  data-questionid={question.questionId}
+                                                                  data-order={question.questionOrder}
+                                                                  onclick={removeAddition}>
+                                                                <lightning-icon icon-name='utility:close' size='small'></lightning-icon>
+                                                              <span class="slds-assistive-text">Press delete or backspace to remove</span>
+                                                            </span>
+                                                          </span>
+                                                    </template>
+                                                </div>
+                                                <div class='slds-col' style='width: 40%'>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="slds-grid" style='padding: 10px'>
+                                            <div class='slds-col' style='max-width: 20%'>
+                                                <p>Threat Points</p>
+                                            </div>
+                                            <div class='slds-col' style='max-width: 20%'>
+                                                <lightning-input label='Threat Points'
+                                                                 variant='label-hidden'
+                                                                 data-order={question.questionOrder}
+                                                                 onchange={changeThreatLevel}
+                                                                 value={question.threatPoints}>
+
+                                                </lightning-input>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <footer class="slds-card__footer">
+                                        <lightning-button-group>
+                                            <template if:true={question.haveChange}>
+                                                <lightning-button variant='success'
+                                                                  label="Save"
+                                                                  disabled={newLibObject.saveQuestionDisabled}
+                                                                  data-questionorder={question.questionOrder}
+                                                                  onclick={saveQuestion}>
+                                                </lightning-button>
+                                            </template>
+                                            <template if:false={question.haveRichNotes}>
+                                                <lightning-button label="Add Note"
+                                                                  data-mode='note'
+                                                                  data-questionid={question.questionId}
+                                                                  data-order={question.questionOrder}
+                                                                  data-nodemode="new"
+                                                                  onclick={openModal}>
+                                                </lightning-button>
+                                            </template>
+                                            <template if:true={question.haveRichNotes}>
+                                                <lightning-button label="Change Notes"
+                                                                  data-mode='note'
+                                                                  variant='brand'
+                                                                  data-questionid={question.questionId}
+                                                                  data-order={question.questionOrder}
+                                                                  data-nodemode="change"
+                                                                  onclick={openModal}>
+                                                </lightning-button>
+                                            </template>
+
+                                            <template if:false={question.haveIssue}>
+                                                <lightning-button label="Add Issue"
+                                                                  data-mode="issue"
+                                                                  data-questionid={question.questionId}
+                                                                  data-order={question.questionOrder}
+                                                                  onclick={openModal}>
+                                                </lightning-button>
+                                            </template>
+                                            <template if:true={question.haveIssue}>
+                                                <lightning-button label="Change Issue"
+                                                                  data-mode="issue"
+                                                                  variant='brand'
+                                                                  data-questionid={question.questionId}
+                                                                  data-order={question.questionOrder}
+                                                                  onclick={openModal}>
+                                                </lightning-button>
+                                            </template>
+
+                                            <template if:false={question.haveRecommendation}>
+                                                <lightning-button label="Add Recommendation"
+                                                                  data-mode='recommendation'
+                                                                  data-questionid={question.questionId}
+                                                                  data-order={question.questionOrder}
+                                                                  onclick={openModal}>
+                                                </lightning-button>
+                                            </template>
+                                            <template if:true={question.haveRecommendation}>
+                                                <lightning-button label="Change Recommendation"
+                                                                  data-mode='recommendation'
+                                                                  variant='brand'
+                                                                  data-questionid={question.questionId}
+                                                                  data-order={question.questionOrder}
+                                                                  onclick={openModal}>
+                                                </lightning-button>
+                                            </template>
+
+                                            <template if:false= {question.havePrices}>
+                                                <lightning-button label="Add Cost"
+                                                                  data-mode="prices"
+                                                                  data-questionid={question.questionId}
+                                                                  data-order={question.questionOrder}
+                                                                  onclick={openModal}>
+                                                </lightning-button>
+                                            </template>
+                                            <template if:true={question.havePrices}>
+                                                <lightning-button label="Change Cost"
+                                                                  data-mode="prices"
+                                                                  variant='brand'
+                                                                  data-questionid={question.questionId}
+                                                                  data-order={question.questionOrder}
+                                                                  onclick={openModal}>
+                                                </lightning-button>
+                                            </template>
+                                            <lightning-button variant="destructive"
+                                                              label="Delete Question"
+                                                              data-order={question.questionOrder}
+                                                              data-questionid={question.questionId}
+                                                              onclick={deleteQuestion}>
+                                            </lightning-button>
+                                        </lightning-button-group>
+                                    </footer>
+                                </article>
+                            </div>
+                        </template>
+                    </template>
+                </template>
+            </div>
+
+            <div class='slds-col right_section'>
+                <lightning-card>
+                    <h3 slot="title">
+                        <lightning-icon icon-name="utility:connected_apps" size="small"></lightning-icon>
+                        Questionnaires
+                    </h3>
+                    <lightning-button label="New" disabled={newDisabled} onclick={newLib} slot="actions"></lightning-button>
+                    <div>
+                        <template for:each={libs} for:item='lib'>
+                            <p class='lib_item'
+                               data-libid={lib.libId}
+                               onclick={openLib} key={lib.libId}>{lib.libName}</p>
+                        </template>
+                    </div>
+                </lightning-card>
+            </div>
+
+            <template if:true={modalProperties.showModal}>
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                    title="Close"
+                                    onclick={closeModal}>
+                                <lightning-icon icon-name='utility:close' size='small'></lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 id="modal-heading-01"
+                                class="slds-modal__title slds-hyphenate">
+                                {modalProperties.modalName}
+                            </h2>
+                            <p class="slds-m-top_x-small">{modalProperties.modalTitle}</p>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <template if:true={modalProperties.modalBody.issue}>
+                                <div class='slds-grid rec_checkboxes'>
+                                    <div class='slds-col'>
+                                        <div>
+                                            <lightning-input type="checkbox"
+                                                             label="Issue For YES"
+                                                             name="yes"
+                                                             data-mode="yes"
+                                                             onchange={changeIssue}
+                                                             checked={modalProperties.question.haveYesIssue}>
+                                            </lightning-input>
+                                        </div>
+                                    </div>
+                                    <div class='slds-col'>
+                                        <div>
+                                            <lightning-input type="checkbox"
+                                                             label="Issue For NO"
+                                                             name="no"
+                                                             data-mode="no"
+                                                             onchange={changeIssue}
+                                                             checked={modalProperties.question.haveNoIssue}>
+                                            </lightning-input>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <lightning-input-rich-text value={modalProperties.question.currentIssue} formats={formats}
+                                                               onchange={setIssueText}>
+                                    </lightning-input-rich-text>
+                                </div>
+                                <div>
+                                    <template if:false={modalProperties.question.haveIssueImage}>
+                                        <div class="slds-form-element" style='text-align: center'>
+                                            <span class="slds-form-element__label" id="file-selector-primary-label">Attachment</span>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-file-selector slds-file-selector_files">
+                                                    <div class="slds-file-selector__dropzone">
+                                                        <input type="file"
+                                                               class="slds-file-selector__input slds-assistive-text"
+                                                               accept="image/*"
+                                                               data-mode="issue"
+                                                               onchange={handleFiles}
+                                                               id="file-upload-input-01"
+                                                               aria-labelledby="file-selector-primary-label file-selector-secondary-label" />
+                                                        <label class="slds-file-selector__body" for="file-upload-input-01" id="file-selector-secondary-label">
+                                                  <span class="slds-file-selector__button slds-button slds-button_neutral">
+                                                    <lightning-icon icon-name='utility:upload' size='small'></lightning-icon>
+                                                      Upload Image</span>
+                                                            <span class="slds-file-selector__text slds-medium-show">or Drop Files</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </template>
+                                    <template if:true={modalProperties.question.haveIssueImage}>
+                                        <div>
+                                            <button class='slds-button slds-button--neutral remove_image_button'
+                                                    data-mode='issue'
+                                                    onclick={removeIssueImage}>Remove Image
+                                            </button>
+                                        </div>
+                                    </template>
+                                </div>
+                                <div style='text-align: center'>
+                                    <img class='uploadedPhoto' src={modalProperties.question.issueImage}/>
+                                </div>
+                            </template>
+
+                            <template if:true={modalProperties.modalBody.recommendation}>
+                                <div>
+                                    <lightning-input-rich-text value={modalProperties.question.recommendation} formats={formats}
+                                                               onchange={setRecText}>
+                                    </lightning-input-rich-text>
+                                </div>
+                                <div>
+                                    <template if:false={modalProperties.question.haveRecImage}>
+                                        <div class="slds-form-element" style='text-align: center'>
+                                            <span class="slds-form-element__label" id="file-selector-primary-label-rec">Attachment</span>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-file-selector slds-file-selector_files">
+                                                    <div class="slds-file-selector__dropzone">
+                                                        <input type="file"
+                                                               class="slds-file-selector__input slds-assistive-text"
+                                                               accept="image/*"
+                                                               data-mode="rec"
+                                                               onchange={handleFiles}
+                                                               id="file-upload-input-01-rec"
+                                                               aria-labelledby="file-selector-primary-label-rec file-selector-secondary-label-rec" />
+                                                        <label class="slds-file-selector__body" for="file-upload-input-01-rec" id="file-selector-secondary-label-rec">
+                                                  <span class="slds-file-selector__button slds-button slds-button_neutral">
+                                                    <lightning-icon icon-name='utility:upload' size='small'></lightning-icon>
+                                                      Upload Image</span>
+                                                            <span class="slds-file-selector__text slds-medium-show">or Drop Files</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </template>
+                                    <template if:true={modalProperties.question.haveRecImage}>
+                                        <div>
+                                            <button class='slds-button slds-button--neutral remove_image_button'
+                                                    data-mode='rec'
+                                                    onclick={removeIssueImage}>Remove Image
+                                            </button>
+                                        </div>
+                                    </template>
+                                </div>
+                                <div style='text-align: center'>
+                                    <img class='uploadedPhoto' src={modalProperties.question.recImage}/>
+                                </div>
+                            </template>
+
+                            <template if:true={modalProperties.modalBody.note}>
+                                <div>
+<!--                                    <button class='slds-button slds-button&#45;&#45;brand' style='width: 100%' onclick={addNote}>Add Note-->
+<!--                                    </button>-->
+                                </div>
+                                <template for:each={modalProperties.question.questionRichNotes} for:item='note'>
+                                    <div key={note.order} class='note_block' data-noteorder={note.order}>
+                                        <div class='slds-grid'>
+                                            <div class='slds-col'>
+                                                <lightning-input label='Note Title'
+                                                                 data-mode="richNoteTitle"
+                                                                 onchange={noteInputChange}
+                                                                 value={note.richNoteTitle}>
+                                                </lightning-input>
+                                            </div>
+                                            <div class='slds-col' style='width: 30%'>
+                                                <lightning-button-group style="width: 100%">
+                                                    <button class='slds-button slds-button--neutral remove_image_button'
+                                                            style='bottom: -14px;'
+                                                            onclick={deleteNote}>Remove Note
+                                                    </button>
+                                                    <template if:true={note.image}>
+                                                        <button class='slds-button slds-button--neutral remove_image_button'
+                                                                style='bottom: -14px;'
+                                                                data-order={note.order}
+                                                                onclick={removeNoteImage}>Remove Image
+                                                        </button>
+                                                    </template>
+                                                </lightning-button-group>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class='slds-grid'>
+                                                <div class='slds-col'>
+                                                    <lightning-input-rich-text formats={formats}
+                                                                               data-mode="richNoteBody"
+                                                                               onchange={noteInputChange}
+                                                                               value={note.richNoteBody}>
+
+                                                    </lightning-input-rich-text>
+                                                </div>
+                                                <template if:true={note.image}>
+                                                    <div class='slds-col note_image'>
+                                                        <div style='text-align: center'>
+                                                            <img src={note.image}/>
+                                                        </div>
+                                                    </div>
+                                                </template>
+                                            </div>
+                                        </div>
+                                        <template if:false={note.image}>
+                                            <div key={note.order}>
+                                                <lightning-input type="file"
+                                                                 label="Attachment"
+                                                                 accept="image/*"
+                                                                 data-mode="richNoteImage"
+                                                                 data-order={note.order}
+                                                                 onchange={handleFiles}>
+                                                </lightning-input>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </template>
+                            </template>
+
+                            <template if:true={modalProperties.modalBody.prices}>
+                                <template for:each={modalProperties.question.prices} for:item='price'>
+                                    <div key={price.priceOrder} class='slds-grid slds-col_padded-around'>
+                                        <lightning-input-rich-text formats={formats}
+                                                                   data-mode="priceText"
+                                                                   onchange={priceInputChange}
+                                                                   value={price.priceText}>
+
+                                        </lightning-input-rich-text>
+<!--                                        <div class='slds-col'>-->
+<!--                                            <lightning-input type='number'-->
+<!--                                                             formatter="currency"-->
+<!--                                                             label='From'-->
+<!--                                                             placeholder='Cost'-->
+<!--                                                             onchange={priceInputChange}-->
+<!--                                                             value={price.priceFrom}-->
+<!--                                                             data-mode="priceFrom"-->
+<!--                                                             data-order={price.priceOrder}>-->
+<!--                                            </lightning-input>-->
+<!--                                        </div>-->
+<!--                                        <div class='slds-col'>-->
+<!--                                            <lightning-input type='number'-->
+<!--                                                             formatter="currency"-->
+<!--                                                             label='To'-->
+<!--                                                             placeholder='Cost'-->
+<!--                                                             onchange={priceInputChange}-->
+<!--                                                             value={price.priceTo}-->
+<!--                                                             data-mode="priceTo"-->
+<!--                                                             data-order={price.priceOrder}>-->
+<!--                                            </lightning-input>-->
+<!--                                        </div>-->
+<!--                                        <div class='slds-col'>-->
+<!--                                            <lightning-input type='text'-->
+<!--                                                             label="Cost Message"-->
+<!--                                                             placeholder="Message"-->
+<!--                                                             onchange={priceInputChange}-->
+<!--                                                             value={price.message}-->
+<!--                                                             data-mode="message"-->
+<!--                                                             data-order={price.priceOrder}>-->
+<!--                                            </lightning-input>-->
+<!--                                        </div>-->
+<!--                                        <div class='slds-col'>-->
+<!--                                            <button class='slds-button slds-button&#45;&#45;neutral remove_image_button' style='bottom: -14px'-->
+<!--                                                    data-order={price.priceOrder}-->
+<!--                                                    onclick={removePrice}>Remove-->
+<!--                                            </button>-->
+<!--                                        </div>-->
+                                    </div>
+                                </template>
+                            </template>
+
+                            <template if:true={modalProperties.modalBody.noteImage}>
+                                <div>
+                                    <lightning-input type='text'
+                                                     label='Image Note'
+                                                     value={modalProperties.question.imageNoteDescription}
+                                                     onchange={changeImageNoteDescription}
+                                                     placeholder='Enter text'>
+                                    </lightning-input>
+                                </div>
+                                <div>
+                                    <template if:false={modalProperties.question.haveNoteImage}>
+                                        <div class="slds-form-element" style='text-align: center'>
+                                            <span class="slds-form-element__label" id="imageNote-file-selector-primary-label">Attachment</span>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-file-selector slds-file-selector_files">
+                                                    <div class="slds-file-selector__dropzone">
+                                                        <input type="file"
+                                                               class="slds-file-selector__input slds-assistive-text"
+                                                               accept="image/*"
+                                                               data-mode="imageNote"
+                                                               onchange={handleFiles}
+                                                               id="imageNote-file-upload-input-01"
+                                                               aria-labelledby="imageNote-file-selector-primary-label imageNote-file-selector-secondary-label" />
+                                                        <label class="slds-file-selector__body" for="imageNote-file-upload-input-01" id="imageNote-file-selector-secondary-label">
+                                                              <span class="slds-file-selector__button slds-button slds-button_neutral">
+                                                                <lightning-icon icon-name='utility:upload' size='small'></lightning-icon>
+                                                                  Upload Image</span>
+                                                                        <span class="slds-file-selector__text slds-medium-show">or Drop Files
+                                                              </span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </template>
+                                    <template if:true={modalProperties.question.haveNoteImage}>
+                                        <div>
+                                            <button class='slds-button slds-button--neutral remove_image_button'
+                                                    data-mode='imageNote'
+                                                    onclick={removeIssueImage}>Remove Image
+                                            </button>
+                                        </div>
+                                    </template>
+                                    <div style='text-align: center'>
+                                        <img class='uploadedPhoto' src={modalProperties.question.noteImage}/>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <button class="slds-button slds-button_neutral" onclick={closeModal}>Back</button>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+
+            <template if:true={openDeleteModal}>
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-03" aria-modal="true" aria-describedby="modal-content-id-3" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                                <lightning-icon icon-name='utility:close' size='small'></lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 id="modal-heading-03" class="slds-modal__title slds-hyphenate">{deleteInfo.header}</h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-3">
+                            <p>{deleteInfo.body}</p>
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <button class="slds-button slds-button_neutral" onclick={closeDeleteModal}>Cancel</button>
+                            <button class="slds-button slds-button_destructive" onclick={deleteProcess}>Continue</button>
+                        </footer>
+                    </div>
+                    <template if:true={deleteSpinner}>
+                        <div>
+                            <lightning-spinner size='large' alternative-text='Loading...'>
+
+                            </lightning-spinner>
+                        </div>
+                    </template>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+
+            <template if:true={newAssessmentTarget}>
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-02" aria-modal="true" aria-describedby="modal-content-id-2" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                    title="Close"
+                                    onclick={closeTargetModal}>
+                                <lightning-icon icon-name='utility:close' size='small'></lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 id="modal-heading-02" class="slds-modal__title slds-hyphenate">Assessment Targets</h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                            <template if:true={availableTargets}>
+                                <template for:each={availableTargets} for:item='target'>
+                                    <p key={target.targetId}
+                                       class='modal_target_item'
+                                       data-targetid={target.targetId}
+                                       onclick={chooseTarget}>{target.targetName}
+                                    </p>
+                                </template>
+                            </template>
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <button class="slds-button slds-button_neutral" onclick={closeTargetModal}>Cancel</button>
+                            <button class="slds-button slds-button_brand" disabled={targetSaveDisabled} onclick={saveTarget}>Save</button>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+
+            <template if:true={newLibTask}>
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-04" aria-modal="true" aria-describedby="modal-content-id-4" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                    title="Close"
+                                    onclick={closeTaskModal}>
+                                <lightning-icon icon-name='utility:close' size='small'></lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 id="modal-heading-04" class="slds-modal__title slds-hyphenate">New Task</h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-4">
+                            <div>
+                                <lightning-input type='text' label='Task Title' data-mode="title" value={newTaskProps.title} onkeyup={taskChange}>
+
+                                </lightning-input>
+                            </div>
+                            <div style='margin-top: 15px'>
+                                <lightning-input-rich-text label='Task Description' data-mode="description" formats={formats} onkeyup={taskChange} value={newTaskProps.description}>
+
+                                </lightning-input-rich-text>
+                            </div>
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <button class="slds-button slds-button_neutral" onclick={closeTaskModal}>Cancel</button>
+                            <template if:true={newTaskProps.id}>
+                                <button class='slds-button slds-button_destructive' onclick={deleteTask}>Delete</button>
+                            </template>
+                            <button class="slds-button slds-button_brand" disabled={taskSaveDisabled} onclick={saveTask}>Save</button>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+        </div>
+    </div>
+</template>

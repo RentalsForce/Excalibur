@@ -1,0 +1,20 @@
+<!--
+ - Created by Artsiom.Klimanski on 12/12/2019.
+ -->
+
+<!-- Excalibur Base -->
+<template>
+
+    <template if:true={start}>
+        <c-start-page onlogin={haveLogin}></c-start-page>
+    </template>
+
+    <template if:true={login}>
+        <c-work-space user-name={userName} onlogin={haveLogin}></c-work-space>
+    </template>
+
+    <template if:true={loginInstructor}>
+        <c-work-space-instructor user-name={userName} onlogin={haveLogin}></c-work-space-instructor>
+    </template>
+
+</template>
